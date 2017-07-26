@@ -23,7 +23,7 @@ def append_log(item, price, how_many):
     with open('history.txt', 'a') as file_1:
         file_1.write(item + " , " + str(price)+ " , " + str(how_many) + "\n")
 
-def refuel(item, inventory):
+def resupply(item, inventory):
     """() -> None
 
     If a certain item stock is lower than or at 100, restocks to 1000.
@@ -54,7 +54,7 @@ def refuel(item, inventory):
     elif item == '8. Bane\'s "Breaking The Bat: It\'s A Snap!"':
         if inventory[1][1] <= 100:
             inventory[1][1] = 1000
-    elif item == '9. Hugo Strange\'s "The Dark History of The Medical Practice"':
+    elif item == '9. Hugo Strange\'s "The Dark History Of The Medical Practice"':
         if inventory[1][1] <= 100:
             inventory[1][1] = 1000
     elif item == '10.Oswald Cobblepot\'s "Betrayal And Evil Laughter: Squawk!"':
@@ -104,7 +104,7 @@ def update_inventory(item, how_many, inventory):
         inventory[2][1] = inventory[2][1] - how_many
     elif item == '8. Bane\'s "Breaking The Bat: It\'s A Snap!"':
         inventory[2][1] = inventory[2][1] - how_many
-    elif item == '9. Hugo Strange\'s "The Dark History of The Medical Practice"':
+    elif item == '9. Hugo Strange\'s "The Dark History Of The Medical Practice"':
         inventory[2][1] = inventory[2][1] - how_many
     elif item == '10.Oswald Cobblepot\'s "Betrayal And Evil Laughter: Squawk!"':
         inventory[2][1] = inventory[2][1] - how_many

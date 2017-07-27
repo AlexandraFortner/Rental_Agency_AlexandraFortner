@@ -15,7 +15,6 @@ def slow_type(t):
     return input()
 
 
-
 def insert_line(string, index):
     return string[:index] + '|\n|' + string[index:]
 def pretty_border(string):

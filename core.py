@@ -7,6 +7,7 @@ def pretty_menu(list_strings):
     return message
 
 def make_pretty(inventory):
+
     stringy = ''
     for item in inventory:
        stringy += "\n {:<60}{:>40}".format(item[0], "Stocked Inventory: " + str(item[1]))
@@ -19,9 +20,19 @@ def CountySalesTax(price):
 
     >>> CountySalesTax(23.00)
     1.61
+    >>> CountySalesTax(0)
+    0.0
+    >>> CountySalesTax(-23)
+    0.0
     """
+    if '-' in str(price):
+        return 0.0
+    elif '0' == str(price):
+        return 0.0
+
     county_tax = 0.07
-    return price * county_tax
+    return float(price) * county_tax
+    
 
 
 def StateSalesTax(price):
@@ -43,21 +54,20 @@ def receipt(money):
     prints all information to user in the form of a receipt.
 
     >>> receipt(2.00)
-     __________________________________
     <BLANKLINE>
-    Original Price Of Gas: 2.0
-    + State Tax: 0.16
-    + County Tax: 0.14
-    <BLANKLINE>
-    Total: 2.3000000000000003
     ___________________________________
+    |
+    |Original Price:2.0
+    |+ State Tax:0.16
+    |+ County Tax:0.14
+    |Total:2.3000000000000003
+    |__________________________________
     <BLANKLINE>
     Here's your receipt! Thank you for shopping with us!
-    <BLANKLINE>
     """
     revenue = 0
     inventory = 0
-    print('\n___________________________________\n|\n|Original Price Of Gas:' + str(money))
+    print('\n___________________________________\n|\n|Original Price:' + str(money))
     state_taxes = StateSalesTax(money)
     print('|+ State Tax:' + str(state_taxes))
     county_taxes = CountySalesTax(money)

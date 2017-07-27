@@ -45,13 +45,26 @@ def begin2():
 
     listey = disk.open_log('inventory.txt')
     
-
-
     first = slow_type('\n-What Audio File would you like to rent today? You can rent up to a week.\n\n-').title()
     
-    
     if first == '1':
-        scarecrow = slow_type('\nYou\'ve chosen ' + str(listey[0][0]) + '! How long would you like to rent it?\n\n-')
+        scarecrow = slow_type('\nYou\'ve chosen ' + str(listey[0][0]).strip('1. ') + '\nHow long would you like to rent it?\n\n-')
+        return scarecrow
+    elif first == '2':
+        hatter = slow_type('\nYou have chosen ' + str(listey[1][0]).strip('2. ') + '\nHow long would you like to rent it?\n\n-')
+        return hatter
+    elif first == '3':
+        riddler = slow_type('\nYou have chosen ' + str(listey[2][0]).strip('3. ') + '\nHow long would you like to rent it?\n\n-')
+        return riddler
+    elif first == '4':
+        bane = slow_type('\nYou have chosen ' + str(listey[3][0]).strip('4. ') + '\nHow long would you like to rent it?\n\n-')
+        return bane
+    elif first == '5':
+        strange = slow_type('\nYou have chosen ' + str(listey[4][0]).strip('5. ') + '\nHow long would you like to rent it?\n\n-')
+        return strange
+
+# def due(s):
+
         
 # def pick_choice():
 
@@ -116,7 +129,8 @@ def begin2():
 
 def main():
     begin()
-    begin2()
-    pick_choice()
+    s = begin2()
+    # due(s)
+    # pick_choice()
 if __name__ == '__main__':
     main()

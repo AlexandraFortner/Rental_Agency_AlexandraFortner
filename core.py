@@ -1,9 +1,11 @@
 #DO NOT IMPORT ANY FILE
+
 def pretty_choice(choice):
     string = ''
     for item in choice:
         string == string.strip('\'')
     return string
+
 def make_pretty(inventory):
 
     stringy = ''
@@ -52,34 +54,6 @@ def StateSalesTax(price):
 
     state_tax = 0.08
     return float(price) * state_tax
-
-def receipt(money, due):
-    """(float) -> float
-
-    prints all information to user in the form of a receipt.
-
-    >>> receipt(2.00)
-    <BLANKLINE>
-    ___________________________________
-    |
-    |Original Price:2.0
-    |+ State Tax:0.16
-    |+ County Tax:0.14
-    |Total:2.3000000000000003
-    |__________________________________
-    <BLANKLINE>
-    Here's your receipt! Thank you for shopping with us!
-    """
-    revenue = 0
-    inventory = 0
-    print('\n___________________________________\n|\n|Original Price:' + str(money))
-    state_taxes = StateSalesTax(money)
-    print('|+ State Tax:' + str(state_taxes))
-    county_taxes = CountySalesTax(money)
-    print('|+ County Tax:' + str(county_taxes))
-    total = money + state_taxes + county_taxes
-    print('|Due In: ' + str(due) + ' days.')
-    print('|Total:' + str(total))
-    print('|__________________________________\n\nHere\'s your receipt! Thank you for shopping with us!')
     
 # def deposit():
+    

@@ -30,6 +30,36 @@ def pretty_border(string):
     
 #MAIN CODE BELOW
 
+def receipt(price, due):
+    """(float) -> float
+
+    prints all information to user in the form of a receipt.
+
+    >>> receipt(2.00)
+    <BLANKLINE>
+    ___________________________________
+    |
+    |Original Price:2.0
+    |+ State Tax:0.16
+    |+ County Tax:0.14
+    |Due In:  days.
+    |Total:2.3000000000000003
+    |__________________________________
+    <BLANKLINE>
+    Here's your receipt! Thank you for shopping with us!
+    """
+    revenue = 0
+    inventory = 0
+    print('\n___________________________________\n|\n|Original Price:' + str(price))
+    state_taxes = core.StateSalesTax(price)
+    print('|+ State Tax:' + str(state_taxes))
+    county_taxes = core.CountySalesTax(price)
+    print('|+ County Tax:' + str(county_taxes))
+    total = price + state_taxes + county_taxes
+    print('|Due In: ' + str(due) + ' days.')
+    print('|Total:' + str(total))
+    print('|__________________________________\n\nHere\'s your receipt! Thank you for shopping with us!')
+
 def begin():
     print((pretty_border('Welcome to Arkham Asylum Library Files! Where the villains of Gotham record '
                         'Audio Files, Available to rent to the public!')))
@@ -41,26 +71,26 @@ def begin():
 
     print('To exit this application, click "q". Type Below, Please:\n')
 
-def begin2():
+def choose_the_audio_file():
     while True:
         listey = disk.open_log('inventory.txt')
         
         first = slow_type('\n-What Audio File would you like to rent today? You can rent up to a week.\n\n-').title()
         
         if first == '1':
-            print('\nYou\'ve chosen ' + str(listey[0][0]).strip('1. ') + '.')
+            print('\n•You\'ve chosen ' + str(listey[0][0]).strip('1. ') + '•')
             break
         elif first == '2':
-            print('\nYou have chosen ' + str(listey[1][0]).strip('2. ') + '.')
+            print('\n•You have chosen ' + str(listey[1][0]).strip('2. ') + '•')
             break
         elif first == '3':
-            print('\nYou have chosen ' + str(listey[2][0]).strip('3. ') + '.')
+            print('\n•You have chosen ' + str(listey[2][0]).strip('3. ') + '•')
             break
         elif first == '4':
-            print('\n\nYou have chosen ' + str(listey[3][0]).strip('4. ') + '.')
+            print('\n•You have chosen ' + str(listey[3][0]).strip('4. ') + '•')
             break
         elif first == '5':
-            print('\nYou have chosen ' + str(listey[4][0]).strip('5. ') + '.')
+            print('\n•You have chosen ' + str(listey[4][0]).strip('5. ') + '•')
             break
         elif first == 'Q':
             quit()
@@ -68,17 +98,16 @@ def begin2():
             print('\nInvalid. Please try again.')
         return first #now s = first(the choice of Audio Tape from user's input)
         
-def due(s):
-    valid_number_list = ['1', '2', '3', '4', '5', '6', '7']
-    due_date = slow_type('\nHow many days would you like to rent it?\n\n-')
-    if due_date not in valid_number_list:
-        print('Invalid Input. Try again.')
-    else:
-        return due_date
+def due():
+    while True:
+        valid_number_list = ['1', '2', '3', '4', '5', '6', '7']
+        due_date = slow_type('\nHow many days would you like to rent it?\n\n-')
+        if due_date not in valid_number_list:
+            print('Invalid Input. Try again.')
+        else:
+            return due_date
 
 
-        
-# def pick_choice():
 
 #     if first == '1':
 #         scarecrow = slow_type('\nYou have chosen Dr. Crane\'s "A Study In Fear".\nThe rental fee is 1.00, with a deposit of 4.00. Your deposit will be refunded after you return the rented Audio File.\nWould you like to rent it? Please input yes or no.\n\n-').title()
@@ -136,13 +165,9 @@ def due(s):
 
     inventory = disk.open_inventory()
     
-
-
-
 def main():
     begin()
-    s = begin2()
-    due(s)
-    # pick_choice()
+    s = choose_the_audio_file()
+    due()
 if __name__ == '__main__':
     main()

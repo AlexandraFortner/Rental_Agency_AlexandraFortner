@@ -1,11 +1,9 @@
 #DO NOT IMPORT ANY FILE
-
-def pretty_menu(list_strings):
-    """[strings] -> str"""
-    message = list_strings
-
-    return message
-
+def pretty_choice(choice):
+    string = ''
+    for item in choice:
+        string == string.strip('\'')
+    return string
 def make_pretty(inventory):
 
     stringy = ''
@@ -55,7 +53,7 @@ def StateSalesTax(price):
     state_tax = 0.08
     return float(price) * state_tax
 
-def receipt(money):
+def receipt(money, due):
     """(float) -> float
 
     prints all information to user in the form of a receipt.
@@ -80,5 +78,7 @@ def receipt(money):
     county_taxes = CountySalesTax(money)
     print('|+ County Tax:' + str(county_taxes))
     total = money + state_taxes + county_taxes
+    print('|Due In: ' + str(due) + ' days.')
     print('|Total:' + str(total))
     print('|__________________________________\n\nHere\'s your receipt! Thank you for shopping with us!')
+    

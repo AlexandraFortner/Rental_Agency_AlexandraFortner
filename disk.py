@@ -39,27 +39,13 @@ def resupply(item, inventory):
     elif item == '3. Edward Nygma\'s "Riddles To Blow The Mind...Literally!"':
         if inventory[2][1] <= 100:
             inventory[2][1] = 1000
-    elif item == '4. The Joker\'s "Ultimate Guide To Annoying The Bat!"':
+    elif item == '4. Bane\'s "Breaking The Bat: It\'s A Snap!"':
         if inventory[1][1] <= 100:
             inventory[1][1] = 1000
-    elif item == '5. Harley Quinn\'s "How to Love A Psychopath"':
+    elif item == '5. Hugo Strange\'s "The Dark History Of The Medical Practice"':
         if inventory[1][1] <= 100:
             inventory[1][1] = 1000
-    elif item == '6. Two-Face\'s "A Sigh Of Duality: Coping with Your Scars"':
-        if inventory[1][1] <= 100:
-            inventory[1][1] = 1000
-    elif item == '7. Mr. Freeze\'s "Loving Unconditionally"':
-        if inventory[1][1] <= 100:
-            inventory[1][1] = 1000
-    elif item == '8. Bane\'s "Breaking The Bat: It\'s A Snap!"':
-        if inventory[1][1] <= 100:
-            inventory[1][1] = 1000
-    elif item == '9. Hugo Strange\'s "The Dark History Of The Medical Practice"':
-        if inventory[1][1] <= 100:
-            inventory[1][1] = 1000
-    elif item == '10.Oswald Cobblepot\'s "Betrayal And Evil Laughter: Squawk!"':
-        if inventory[1][1] <= 100:
-            inventory[1][1] = 1000
+   
   
     with open ('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
@@ -94,21 +80,11 @@ def update_inventory(item, how_many, inventory):
         inventory[1][1] = inventory[1][1] - how_many
     elif item == '3. Edward Nygma\'s "Riddles To Blow The Mind...Literally!"':
         inventory[2][1] = inventory[2][1] - how_many
-    elif item == '4. The Joker\'s "Ultimate Guide To Annoying The Bat!"':
+    elif item == '4. Bane\'s "Breaking The Bat: It\'s A Snap!"':
         inventory[2][1] = inventory[2][1] - how_many
-    elif item == '5. Harley Quinn\'s "How to Love A Psychopath"':
+    elif item == '5. Hugo Strange\'s "The Dark History Of The Medical Practice"':
         inventory[2][1] = inventory[2][1] - how_many
-    elif item == '6. Two-Face\'s "A Sigh Of Duality: Coping with Your Scars"':
-        inventory[2][1] = inventory[2][1] - how_many
-    elif item == '7. Mr. Freeze\'s "Loving Unconditionally"':
-        inventory[2][1] = inventory[2][1] - how_many
-    elif item == '8. Bane\'s "Breaking The Bat: It\'s A Snap!"':
-        inventory[2][1] = inventory[2][1] - how_many
-    elif item == '9. Hugo Strange\'s "The Dark History Of The Medical Practice"':
-        inventory[2][1] = inventory[2][1] - how_many
-    elif item == '10.Oswald Cobblepot\'s "Betrayal And Evil Laughter: Squawk!"':
-        inventory[2][1] = inventory[2][1] - how_many
-        
+  
 
     with open ('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)

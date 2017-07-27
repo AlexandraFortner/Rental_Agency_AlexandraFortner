@@ -42,28 +42,40 @@ def begin():
     print('To exit this application, click "q". Type Below, Please:\n')
 
 def begin2():
+    while True:
+        listey = disk.open_log('inventory.txt')
+        
+        first = slow_type('\n-What Audio File would you like to rent today? You can rent up to a week.\n\n-').title()
+        
+        if first == '1':
+            print('\nYou\'ve chosen ' + str(listey[0][0]).strip('1. ') + '.')
+            break
+        elif first == '2':
+            print('\nYou have chosen ' + str(listey[1][0]).strip('2. ') + '.')
+            break
+        elif first == '3':
+            print('\nYou have chosen ' + str(listey[2][0]).strip('3. ') + '.')
+            break
+        elif first == '4':
+            print('\n\nYou have chosen ' + str(listey[3][0]).strip('4. ') + '.')
+            break
+        elif first == '5':
+            print('\nYou have chosen ' + str(listey[4][0]).strip('5. ') + '.')
+            break
+        elif first == 'Q':
+            quit()
+        else:
+            print('\nInvalid. Please try again.')
+        return first #now s = first(the choice of Audio Tape from user's input)
+        
+def due(s):
+    valid_number_list = ['1', '2', '3', '4', '5', '6', '7']
+    due_date = slow_type('\nHow many days would you like to rent it?\n\n-')
+    if due_date not in valid_number_list:
+        print('Invalid Input. Try again.')
+    else:
+        return due_date
 
-    listey = disk.open_log('inventory.txt')
-    
-    first = slow_type('\n-What Audio File would you like to rent today? You can rent up to a week.\n\n-').title()
-    
-    if first == '1':
-        scarecrow = slow_type('\nYou\'ve chosen ' + str(listey[0][0]).strip('1. ') + '\nHow long would you like to rent it?\n\n-')
-        return scarecrow
-    elif first == '2':
-        hatter = slow_type('\nYou have chosen ' + str(listey[1][0]).strip('2. ') + '\nHow long would you like to rent it?\n\n-')
-        return hatter
-    elif first == '3':
-        riddler = slow_type('\nYou have chosen ' + str(listey[2][0]).strip('3. ') + '\nHow long would you like to rent it?\n\n-')
-        return riddler
-    elif first == '4':
-        bane = slow_type('\nYou have chosen ' + str(listey[3][0]).strip('4. ') + '\nHow long would you like to rent it?\n\n-')
-        return bane
-    elif first == '5':
-        strange = slow_type('\nYou have chosen ' + str(listey[4][0]).strip('5. ') + '\nHow long would you like to rent it?\n\n-')
-        return strange
-
-# def due(s):
 
         
 # def pick_choice():
@@ -118,11 +130,11 @@ def begin2():
 #             print('Invalid Input.')
 
         
-        with open('inventory.txt') as file:
-            lines = file.readlines()
-        message = lines
+    with open('inventory.txt') as file:
+        lines = file.readlines()
+    message = lines
 
-        inventory = disk.open_inventory()
+    inventory = disk.open_inventory()
     
 
 
@@ -130,7 +142,7 @@ def begin2():
 def main():
     begin()
     s = begin2()
-    # due(s)
+    due(s)
     # pick_choice()
 if __name__ == '__main__':
     main()

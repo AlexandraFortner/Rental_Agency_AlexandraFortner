@@ -82,3 +82,4 @@ def receipt(money, due):
     print('|Total:' + str(total))
     print('|__________________________________\n\nHere\'s your receipt! Thank you for shopping with us!')
     
+# def deposit():

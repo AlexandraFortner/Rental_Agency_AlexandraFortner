@@ -8,3 +8,6 @@ def test_StateSalesTax():
 
 def test_deposit():
     assert core.deposit(-45.00) == 0.0
+
+def test_rent_price():
+    assert core.rent_price(0.0, 12) == '13.0'

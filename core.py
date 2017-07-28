@@ -62,5 +62,22 @@ def deposit(price):
     price1 = price / 10
     return str(price1)
 
+def rent_price(pricey, deposit):
+    """(float) -> float
 
-    
+    Adds the rental price
+    to the deposit for a total.
+
+    >>> rent_price(2.00)
+    3.00
+    >>> rent_price(0)
+    0.0
+    >>> rent_price(-23)
+    0.0
+    """
+    if '-' in str(pricey):
+        return 0.0
+    elif '0' == str(pricey):
+        return 0.0
+    total = float(deposit) + 1.00
+    return str(total)

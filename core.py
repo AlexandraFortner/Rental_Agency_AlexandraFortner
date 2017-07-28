@@ -6,7 +6,7 @@ def CountySalesTax(price):
     Calculates the County Sales Tax of the price.
 
     >>> CountySalesTax(23.00)
-    1.61
+    1.38
     >>> CountySalesTax(0)
     0.0
     >>> CountySalesTax(-23)
@@ -17,18 +17,15 @@ def CountySalesTax(price):
     elif '0' == str(price):
         return 0.0
 
-    county_tax = 0.07
+    county_tax = 0.06
     return float(price) * county_tax
-    
-
-
 def StateSalesTax(price):
     """(float) -> float
 
     Calculates the State Sales Tax of the price.
 
     >>> StateSalesTax(15.00)
-    1.2
+    1.05
     >>> StateSalesTax(0)
     0.0
     >>> StateSalesTax(-15)
@@ -39,7 +36,7 @@ def StateSalesTax(price):
     elif '0' == str(price):
         return 0.0
 
-    state_tax = 0.08
+    state_tax = 0.07
     return float(price) * state_tax
     
 def deposit(price):
@@ -48,7 +45,7 @@ def deposit(price):
     Calculates the deposit of the rented item.
 
     >>> deposit(20.00)
-    3.0
+    '2.0'
     >>> deposit(0)
     0.0
     >>> deposit(-12)
@@ -61,7 +58,6 @@ def deposit(price):
 
     price1 = price / 10
     return str(price1)
-
 def rent_price(pricey, deposit):
     """(float) -> float
 

@@ -47,7 +47,7 @@ def make_pretty(inventory):
 #FUNCTIONS FOR DECORATION END
 #MAIN CODE BELOW
 
-def receipt(price, due):
+def receipt(price, due_date):
     """(float) -> float
 
     prints all information to user in the form of a receipt.
@@ -56,10 +56,10 @@ def receipt(price, due):
     <BLANKLINE>
     ___________________________________
     |
-    |Original Price:2.0
+    |Original Price: 2.0
     |+ State Tax: 0.16
     |+ County Tax: 0.14
-    |Due In:   days.
+    |Due In: 5 days.
     |Total: 2.3000000000000003
     |__________________________________
     <BLANKLINE>
@@ -67,15 +67,18 @@ def receipt(price, due):
     """
     revenue = 0
     inventory = 0
-    print('\n___________________________________\n|\n|Original Price:' + str(price))
+    print('\n___________________________________\n|\n|Original Price: {}'.format(price))
     state_taxes = core.StateSalesTax(price)
-    print('|+ State Tax: ' + str(state_taxes))
+    print('|+ State Tax: {}'.format(state_taxes))
     county_taxes = core.CountySalesTax(price)
-    print('|+ County Tax: ' + str(county_taxes))
-    total = price + state_taxes + county_taxes
-    print('|Due In : ' + str(due) + ' days.')
-    print('|Total: ' + str(total))
+    print('|+ County Tax: {}'.format(county_taxes))
+    total = float(price) + state_taxes + county_taxes
+    print('|Due In: {} days.'.format(due_date))
+    due_date = float(due_date)
+    totally = float(total * due_date)
+    print('|Total: {}'.format(totally))
     print('|__________________________________\n\nHere\'s your receipt! Thank you for shopping with us!')
+    return ''
 
 def begin():
     print((pretty_border('Welcome to Arkham Asylum Library Files! Where the villains of Gotham record '
@@ -128,8 +131,8 @@ def due():
             print('\nInvalid Input. Please input a number that is 1-7. Try again.')
         else:
             return due_date
-
-def pay_deposit_and_rent(s):
+    return str(due_date)
+def pay_deposit_and_rent(s, a):
     while True:
         if s == 'Q':
             quit()
@@ -137,41 +140,43 @@ def pay_deposit_and_rent(s):
             deposit = core.deposit(40.00)
             price = core.rent_price(40.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
+            print(receipt(price, a))
             break
         elif s == '2':
             deposit = core.deposit(20.00)
             price = core.rent_price(20.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
+            print(receipt(price, a))
             break
         elif s == '3':
             deposit = core.deposit(30.50)
             price = core.rent_price(30.50, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
+            print(receipt(price, a))
             break
         elif s == '4':
             deposit = core.deposit(36.00)
             price = core.rent_price(36.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
+            print(receipt(price, a))
             break
         elif s == '5':
             deposit = core.deposit(12.00)
             price = core.rent_price(12.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
+            print(receipt(price, a))
             break
         else:
             input('got: {}'.format(s))
+    return price
+
 
 # def continuing():
-
-
-#                 return core.receipt(5.00, due)
-#            
-
         
 def main():
     begin()
     s = choose_the_audio_file()
-    due()
-    pay_deposit_and_rent(s)
+    a = due()
+    w = pay_deposit_and_rent(s, a)
 if __name__ == '__main__':
     main()

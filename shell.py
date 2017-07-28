@@ -72,11 +72,13 @@ def receipt(price, due_date):
     print('|+ State Tax: {}'.format(state_taxes))
     county_taxes = core.CountySalesTax(price)
     print('|+ County Tax: {}'.format(county_taxes))
+    rental_price = 1.0
     total = float(price) + state_taxes + county_taxes
     print('|Due In: {} days.'.format(due_date))
     due_date = float(due_date)
-    totally = float(total * due_date)
-    print('|Total: {}'.format(totally))
+    totally = float(rental_price * due_date)
+    totally1 = totally + total
+    print('|Total: {}'.format(totally1))
     print('|__________________________________\n\nHere\'s your receipt! Thank you for shopping with us!')
     return ''
 
@@ -142,35 +144,36 @@ def pay_deposit_and_rent(s, a):
             price = core.rent_price(40.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
             print(receipt(price, a))
-            disk.append_log(str(listey[0][0]).strip('1. '), price, 1)
+            disk.append_history(str(listey[0][0]).strip('1. '), price, 1)
             break
         elif s == '2':
             deposit = core.deposit(20.00)
             price = core.rent_price(20.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
             print(receipt(price, a))
-            disk.append_log(str(listey[1][0]).strip('2. '), price, 1)
+            disk.append_history(str(listey[1][0]).strip('2. '), price, 1)
             break
         elif s == '3':
             deposit = core.deposit(30.50)
             price = core.rent_price(30.50, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
             print(receipt(price, a))
-            disk.append_log(str(listey[2][0]).strip('3. '), price, 1)
+            disk.append_history(str(listey[2][0]).strip('3. '), price, 1)
             break
         elif s == '4':
             deposit = core.deposit(36.00)
             price = core.rent_price(36.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
             print(receipt(price, a))
-            disk.append_log(str(listey[3][0]).strip('4. '), price, 1)
+            disk.append_history(str(listey[3][0]).strip('4. '), price, 1)
             break
         elif s == '5':
             deposit = core.deposit(12.00)
             price = core.rent_price(12.00, deposit)
+            rental = 1.0
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
             print(receipt(price, a))
-            disk.append_log(str(listey[4][0]).strip('5. '), price, 1)
+            disk.append_history(str(listey[4][0]).strip('5. '), price, 1)
             break
         else:
             input('got: {}'.format(s))

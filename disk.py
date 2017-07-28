@@ -14,7 +14,7 @@ def open_inventory():
         new_inventory.append([item.strip(), int(how_many.strip()), float(price.strip())])
     return new_inventory
 
-def append_log(item, price, how_many):
+def append_history(item, price, how_many):
     '''str, float, float -> str
     
     Adds to the log with every purchase.

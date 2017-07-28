@@ -83,7 +83,7 @@ def begin():
     
     
     listey = disk.open_inventory()
-    listey1 = core.make_pretty(listey)
+    listey1 = make_pretty(listey)
     print(listey1)
 
     print('To exit this application, click "q". Type Below, Please:\n')
@@ -112,17 +112,38 @@ def choose_the_audio_file():
         elif first == 'Q':
             quit()
         else:
-            print('\nInvalid. Please try again.')
-        return first #now s = first(the choice of Audio Tape from user's input)
+            print('\nInvalid Audio Tape number. Please try again.')
+        
+    return first #now s = first(the choice of Audio Tape from user's input)
         
 def due():
     while True:
         valid_number_list = ['1', '2', '3', '4', '5', '6', '7']
         due_date = slow_type('\nHow many days would you like to rent it?\n\n-')
         if due_date not in valid_number_list:
-            print('Invalid Input. Try again.')
+            print('\nInvalid Input. Please input a number that is 1-7. Try again.')
         else:
             return due_date
+
+def pay_deposit(s):
+    while True:
+        if s == '1':
+            print('\nYou must pay a ' + core.deposit(40.00) + ' deposit. It will be refunded after you return the Audio Tape.')
+            break
+        elif s == '2':
+            print('\nYou must pay a ' + core.deposit(20.00) + ' deposit. It will be refunded after you return the Audio Tape.')
+            break
+        elif s == '3':
+            print('\nYou must pay a ' + core.deposit(30.50) + ' deposit. It will be refunded after you return the Audio Tape.')
+            break
+        elif s == '4':
+            print('\nYou must pay a ' + core.deposit(36.00) + ' deposit. It will be refunded after you return the Audio Tape.')
+            break
+        elif s == '5':
+            print('\nYou must pay a ' + core.deposit(12.00) + ' deposit. It will be refunded after you return the Audio Tape.')
+            break
+        else:
+            input('got: {}'.format(s))
 
 #     if first == '1':
 #         scarecrow = slow_type('\nYou have chosen Dr. Crane\'s "A Study In Fear".\nThe rental fee is 1.00, with a deposit of 4.00. Your deposit will be refunded after you return the rented Audio File.\nWould you like to rent it? Please input yes or no.\n\n-').title()
@@ -174,15 +195,10 @@ def due():
 #             print('Invalid Input.')
 
         
-    with open('inventory.txt') as file:
-        lines = file.readlines()
-    message = lines
-
-    inventory = disk.open_inventory()
-    
 def main():
     begin()
     s = choose_the_audio_file()
     due()
+    pay_deposit(s)
 if __name__ == '__main__':
     main()

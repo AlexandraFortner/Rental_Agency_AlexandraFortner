@@ -42,17 +42,16 @@ def StateSalesTax(price):
     state_tax = 0.08
     return float(price) * state_tax
     
-def deposit_and_rental_fee(price):
+def deposit(price):
     """(float) -> float
 
-    Adds the deposit of the rented item and the
-    standard 1.00 rental fee.
+    Calculates the deposit of the rented item.
 
-    >>> deposit_and_rental_fee(20.00)
+    >>> deposit(20.00)
     3.0
-    >>> deposit_and_rental_fee(0)
+    >>> deposit(0)
     0.0
-    >>> deposit_and_rental_fee(-12)
+    >>> deposit(-12)
     0.0
     """
     if '-' in str(price):
@@ -61,7 +60,7 @@ def deposit_and_rental_fee(price):
         return 0.0
 
     price1 = price / 10
-    return price1 + 1.00
+    return str(price1)
 
 
     

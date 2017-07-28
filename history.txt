@@ -1,0 +1,4 @@
+|Item name| Price(including rental and deposit)| how_many|
+Dr. Crane's "A Study In Fear" , 5.0 , 1
+Jervis Tetch's "Wonderful Wonderland Fairy Tales!" , 3.0 , 1
+Hugo Strange's "The Dark History Of The Medical Practice" , 2.2 , 1

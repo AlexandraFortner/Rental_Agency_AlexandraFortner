@@ -1,5 +1,4 @@
 import core
-
 def open_inventory():
     """() -> [[string(item name), int(quantity)]]
     

@@ -80,7 +80,7 @@ def receipt(price, due_date):
     print('|__________________________________\n\nHere\'s your receipt! Thank you for shopping with us!')
     return ''
 
-def begin():
+def opening_message():
     print((pretty_border('Welcome to Arkham Asylum Library Files! Where the villains of Gotham record '
                         'Audio Files, Available to rent to the public!')))
     
@@ -134,6 +134,7 @@ def due():
     return str(due_date)
 def pay_deposit_and_rent(s, a):
     while True:
+        listey = disk.open_log('inventory.txt')
         if s == 'Q':
             quit()
         elif s == '1':
@@ -141,30 +142,35 @@ def pay_deposit_and_rent(s, a):
             price = core.rent_price(40.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
             print(receipt(price, a))
+            disk.append_log(str(listey[0][0]).strip('1. '), price, 1)
             break
         elif s == '2':
             deposit = core.deposit(20.00)
             price = core.rent_price(20.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
             print(receipt(price, a))
+            disk.append_log(str(listey[1][0]).strip('2. '), price, 1)
             break
         elif s == '3':
             deposit = core.deposit(30.50)
             price = core.rent_price(30.50, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
             print(receipt(price, a))
+            disk.append_log(str(listey[2][0]).strip('3. '), price, 1)
             break
         elif s == '4':
             deposit = core.deposit(36.00)
             price = core.rent_price(36.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
             print(receipt(price, a))
+            disk.append_log(str(listey[3][0]).strip('4. '), price, 1)
             break
         elif s == '5':
             deposit = core.deposit(12.00)
             price = core.rent_price(12.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
             print(receipt(price, a))
+            disk.append_log(str(listey[4][0]).strip('5. '), price, 1)
             break
         else:
             input('got: {}'.format(s))
@@ -174,7 +180,7 @@ def pay_deposit_and_rent(s, a):
 # def continuing():
         
 def main():
-    begin()
+    opening_message()
     s = choose_the_audio_file()
     a = due()
     w = pay_deposit_and_rent(s, a)

@@ -5,14 +5,14 @@ def open_inventory():
     Opens the inventory and splits it.
     
     """
-    new_inventory = []
+    new_inventory1 = []
     with open ('inventory.txt', 'r') as file_2:
         file_2.readline()
         inventory = file_2.readlines()
     for element in inventory:
         item, how_many, price = element.split(', ')
-        new_inventory.append([item.strip(), int(how_many.strip()), float(price.strip())])
-    return new_inventory
+        new_inventory1.append([item.strip(), int(how_many.strip()), float(price.strip())])
+    return new_inventory1
 
 def append_history(item, price, how_many):
     '''str, float, float -> str
@@ -68,9 +68,7 @@ def open_log(file):
 
 def update_inventory(item, how_many, inventory):
     """
-
     Updates the inventory with every purchase.
-
     """
     how_many = int(how_many)
     if item == '1. Dr. Crane\'s "A Study In Fear"':
@@ -80,12 +78,10 @@ def update_inventory(item, how_many, inventory):
     elif item == '3. Edward Nygma\'s "Riddles To Blow The Mind...Literally!"':
         inventory[2][1] = inventory[2][1] - how_many
     elif item == '4. Bane\'s "Breaking The Bat: It\'s A Snap!"':
-        inventory[2][1] = inventory[2][1] - how_many
+        inventory[3][1] = inventory[3][1] - how_many
     elif item == '5. Hugo Strange\'s "The Dark History Of The Medical Practice"':
-        inventory[2][1] = inventory[2][1] - how_many
-  
+        inventory[4][1] = inventory[4][1] - how_many
 
     with open ('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
-        file_2.write(new_inventory)
-    
+        file_2.write(new_inventory) 

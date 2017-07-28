@@ -1,9 +1,6 @@
 import core, disk, time, sys
 
-#RENTAL AGENCY
-
-#MY INNER NERD HAS ACTIVATED
-
+#ARKHAM ASYLUM AUDIO FILE RENTAL AGENCY
 #FUNCTIONS FOR DECORATION BEGIN
 #BELOW
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,7 +33,6 @@ def pretty_choice(choice):
     return string
 
 def make_pretty(inventory):
-
     stringy = ''
     for item in inventory:
        stringy += "\n {:<60}{:>40}".format(item[0], "Stocked Inventory: " + str(item[1]))
@@ -96,7 +92,6 @@ def opening_message():
 def choose_the_audio_file():
     while True:
         listey = disk.open_log('inventory.txt')
-        
         first = slow_type('\n-What Audio File would you like to rent today?\n\n-').title()
         
         if first == '1':
@@ -174,6 +169,7 @@ def pay_deposit_and_rent(s, a):
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
             print(receipt(price, a))
             disk.append_history(str(listey[4][0]).strip('5. '), price, 1)
+            disk.update_inventory(str(listey[4][0]).strip('5. '), 1, 'inventory.txt')
             break
         else:
             input('got: {}'.format(s))

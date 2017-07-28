@@ -77,3 +77,14 @@ def rent_price(pricey, deposit):
         return 0.0
     total = float(deposit) + 1.00
     return str(total)
+
+def convert_back(inventory):
+    """[[string(item name), int(quantity)]] -> str
+    
+    Formats the inventory.
+    
+    """
+    new_inventory = ''
+    for item in inventory:
+        new_inventory += '\n{}, {:.2f}, {:.2f}'.format(item[0], item[1], item[2])
+    return new_inventory

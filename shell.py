@@ -92,7 +92,7 @@ def choose_the_audio_file():
     while True:
         listey = disk.open_log('inventory.txt')
         
-        first = slow_type('\n-What Audio File would you like to rent today? You can rent up to a week.\n\n-').title()
+        first = slow_type('\n-What Audio File would you like to rent today?\n\n-').title()
         
         if first == '1':
             print('\n•You\'ve chosen ' + str(listey[0][0]).strip('1. ') + '•')
@@ -119,15 +119,21 @@ def choose_the_audio_file():
 def due():
     while True:
         valid_number_list = ['1', '2', '3', '4', '5', '6', '7']
-        due_date = slow_type('\nHow many days would you like to rent it?\n\n-')
-        if due_date not in valid_number_list:
+
+        due_date = slow_type('\nHow many days would you like to rent it?\n\n-').title()
+        
+        if due_date == 'Q':
+            quit()
+        elif due_date not in valid_number_list:
             print('\nInvalid Input. Please input a number that is 1-7. Try again.')
         else:
             return due_date
 
 def pay_deposit(s):
     while True:
-        if s == '1':
+        if s == 'Q':
+            quit()
+        elif s == '1':
             print('\nYou must pay a ' + core.deposit(40.00) + ' deposit. It will be refunded after you return the Audio Tape.')
             break
         elif s == '2':
@@ -145,54 +151,15 @@ def pay_deposit(s):
         else:
             input('got: {}'.format(s))
 
+            #ME TO ME: RENTAL FEE NEXT SHOULD BE EASY TRY TO ADD IT TO THE FUNCTION ABOVE, MY DUDE
+
 #     if first == '1':
 #         scarecrow = slow_type('\nYou have chosen Dr. Crane\'s "A Study In Fear".\nThe rental fee is 1.00, with a deposit of 4.00. Your deposit will be refunded after you return the rented Audio File.\nWould you like to rent it? Please input yes or no.\n\n-').title()
 #         if scarecrow == 'Yes':
 #             due = int(slow_type('\nHow many days will you be renting?\n\n-'))
 #             if due <= 7:
 #                 return core.receipt(5.00, due)
-#             else:
-#                 print('\nInvalid. Please input a number betweeen 1-7.')
-#         elif scarecrow == 'No':
-#             print('Very well! Have a nice day!')
-#         else:
-#             print('Invalid Input.')
-
-#     elif first == '2':
-#         hatter = slow_type('\nYou have chosen Jervis Tetch\'s "Wonderful Wonderland Fairy Tales!".\nThe rental fee is 1.00, with a deposit of 2.00. Your deposit will be refunded after you return the rented Audio File.\nWould you like to rent it? Please input yes or no.\n\n-').title()
-#         if hatter == 'Yes':
-#             print('\nThank you for your business! Please come again!')
-#         elif hatter == 'No':
-#             print('\nVery well! Have a nice day!')
-#         else:
-#             print('Invalid Input.')
-
-#     elif first == '3':
-#         riddler = slow_type('\nYou have chosen Edward Nygma\'s "Riddles To Blow The Mind...Literally!".\nThe rental fee is 1.00, with a deposit of 3.00. Your deposit will be refunded after you return the rented Audio File.\nWould you like to rent it? Please input yes or no.\n\n-').title()
-#         if riddler == 'Yes':
-#             print('\nThank you for doing business with us!')
-#         elif riddler == 'No':
-#             print('\nVery well! Have a nice day!')
-#         else:
-#             print('Invalid Input.')
-
-#     elif first == '4':
-#         bane = slow_type('\nYou have chosen Bane\'s "Breaking The Bat: It\'s A Snap!".\nThe rental fee is 1.00, with a down payment of 3.60. Your deposit will be refunded after you return the rented Audio File.\nWould you like to rent it? Please input yes or no.\n\n-').title()
-#         if bane == 'Yes':
-#             print('\nThank you for your business! Please come again!')
-#         elif bane == 'No':
-#             print('\nVery well! Have a nice day!')
-#         else:
-#             print('Invalid Input.')
-
-#     elif first == '5':
-#         strange = slow_type('\nYou have chosen Hugo Strange\'s "The Dark History Of The Medical Practice".\nThe rental fee is 1.00, with a down payment of 1.20. Your deposit will be refunded after you return the rented Audio File.\nWould you like to rent it? Please input yes or no.\n\n-').title()
-#         if strange == 'Yes':
-#             print('\nThank you for your business! Please come again!')
-#         elif strange == 'No':
-#             print('\nVery well! Have a nice day!')
-#         else:
-#             print('Invalid Input.')
+#            
 
         
 def main():

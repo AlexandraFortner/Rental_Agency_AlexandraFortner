@@ -4,8 +4,9 @@ import core, disk, time, sys
 
 #MY INNER NERD HAS ACTIVATED
 
-#FUNCTIONS FOR DECORATION BELOW
-
+#FUNCTIONS FOR DECORATION BEGIN
+#BELOW
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 typing_speed = 17 #wpm
 def slow_type(t):
     for l in t:
@@ -27,7 +28,23 @@ def pretty_border(string):
         s = insert_line(string, 167)
         b = 166 - (len(string) - 334)
         return '\n|' + '~' * 167 + '|\n|' + insert_line(s, 337) +  ''.ljust(b), '|\n|' + '~' * 167 + ('|\n')
-    
+
+def pretty_choice(choice):
+    string = ''
+    for item in choice:
+        string == string.strip('\'')
+    return string
+
+def make_pretty(inventory):
+
+    stringy = ''
+    for item in inventory:
+       stringy += "\n {:<60}{:>40}".format(item[0], "Stocked Inventory: " + str(item[1]))
+    return stringy + '\n\n'
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#FUNCTIONS FOR DECORATION END
 #MAIN CODE BELOW
 
 def receipt(price, due):
@@ -106,8 +123,6 @@ def due():
             print('Invalid Input. Try again.')
         else:
             return due_date
-
-
 
 #     if first == '1':
 #         scarecrow = slow_type('\nYou have chosen Dr. Crane\'s "A Study In Fear".\nThe rental fee is 1.00, with a deposit of 4.00. Your deposit will be refunded after you return the rented Audio File.\nWould you like to rent it? Please input yes or no.\n\n-').title()

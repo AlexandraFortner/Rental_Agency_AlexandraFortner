@@ -1,18 +1,5 @@
 #DO NOT IMPORT ANY FILE
 
-def pretty_choice(choice):
-    string = ''
-    for item in choice:
-        string == string.strip('\'')
-    return string
-
-def make_pretty(inventory):
-
-    stringy = ''
-    for item in inventory:
-       stringy += "\n {:<60}{:>40}".format(item[0], "Stocked Inventory: " + str(item[1]))
-    return stringy + '\n\n'
-
 def CountySalesTax(price):
     """(float) -> float
 

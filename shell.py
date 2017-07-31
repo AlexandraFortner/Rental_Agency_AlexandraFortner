@@ -115,15 +115,14 @@ def choose_the_audio_file():
 def due():
     while True:
         valid_number_list = ['1', '2', '3', '4', '5', '6', '7']
-
         due_date = slow_type('\nHow many days would you like to rent?\n\n-').title()
-        
         if due_date == 'Q':
             quit()
         elif due_date not in valid_number_list:
             print('\nInvalid Input. Please input a number that is 1-7. Try again.')
         else:
             return due_date
+            break
     return str(due_date)
 def how_many_tapes():
     while True:
@@ -149,7 +148,6 @@ def pay_deposit_and_rent(s, a, x):
             deposit = core.deposit(40.00)
             price = core.rent_price(40.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
-            how_many_tapes()
             print(receipt(price, a))
             disk.append_history(item, price, x)
             disk.update_inventory(item, x, listey)
@@ -160,7 +158,6 @@ def pay_deposit_and_rent(s, a, x):
             deposit = core.deposit(20.00)
             price = core.rent_price(20.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
-            how_many_tapes()
             print(receipt(price, a))
             disk.append_history(item, y, how_many1)
             disk.update_inventory(item, how_many1, listey)
@@ -171,7 +168,6 @@ def pay_deposit_and_rent(s, a, x):
             deposit = core.deposit(30.50)
             price = core.rent_price(30.50, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
-            how_many_tapes()
             print(receipt(price, a))
             disk.append_history(item, price, how_many1)
             disk.update_inventory(item, how_many1, listey)
@@ -182,7 +178,6 @@ def pay_deposit_and_rent(s, a, x):
             deposit = core.deposit(36.00)
             price = core.rent_price(36.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
-            how_many_tapes()
             print(receipt(price, a))
             disk.append_history(item, price, how_many1)
             disk.update_inventory(item, how_many1, listey)
@@ -194,7 +189,6 @@ def pay_deposit_and_rent(s, a, x):
             price = core.rent_price(12.00, deposit)
             rental = 1.0
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
-            how_many_tapes()
             print(receipt(price, a))
             disk.append_history(item, price, how_many1)
             disk.update_inventory(item, how_many1, listey)
@@ -214,7 +208,7 @@ def pay_deposit_and_rent(s, a, x):
 #         if returning == '1':
 
 def employee_or_customer_choice():
-    log = disk.open_log('history.txt')
+    log = disk.open_log()
     print((pretty_border('Welcome to Arkham Asylum Library Files! Where the villains of Gotham record '
                         'Audio Files, Available to rent to the public!')))
     while True:
@@ -230,7 +224,7 @@ def employee_or_customer_choice():
 
 def continuing_employee():
     while True:
-        log = disk.open_log('history.txt')
+        log = disk.open_log()
         print('\n\nWhat would you like to do?\n\n')
         choosey = slow_type('1. See inventory.\n2. See revenue.\n3. See past transactions.\n\n-').title()
 
@@ -242,14 +236,16 @@ def continuing_employee():
             rev = str(core.revenue1(log))
             print('\n')
             print(pretty_border(rev))
-        # elif choosey == '3':
+        elif choosey == '3':
+            print(disk.open_log())
         else:
             print('\nInvalid input. Try again.\n\n')
 
 def continuing_customer():
+    while True:
         log = disk.open_log('history.txt')
         print('\n\nWould you like to:\n\n')
-        choose = slow_type('1. Return an Audio File.\n2. Rent an Audio File.\n6. Exit.\n\n-').title()
+        choose = slow_type('1. Return an Audio File.\n2. Rent an Audio File.\n3. Exit.\n\n-').title()
         if choose == 'Q':
             quit()
         # elif choose == '1':
@@ -261,12 +257,7 @@ def continuing_customer():
             a = due()
             x = how_many_tapes()
             w = pay_deposit_and_rent(s, a, x)
-        # elif choose == '4':
-
-        # elif choose == '5':
-
-
-        elif choose == '6':
+        elif choose == '3':
             exit()
         else:
             print('Invalid input. Try again.')

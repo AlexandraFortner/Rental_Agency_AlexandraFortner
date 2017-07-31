@@ -65,11 +65,11 @@ def rent_price(pricey, deposit):
     Adds the rental price
     to the deposit for a total.
 
-    >>> rent_price(2.00)
-    3.00
-    >>> rent_price(0)
+    >>> rent_price(1.00, 4.00)
+    '5.0'
+    >>> rent_price(0, 4.44)
     0.0
-    >>> rent_price(-23)
+    >>> rent_price(-23, 23.33)
     0.0
     """
     if '-' in str(pricey):
@@ -87,15 +87,26 @@ def convert_back(inventory):
     """
     new_inventory = ''
     for item in inventory:
-        new_inventory += '\n{}, {}, {:.2f}'.format(item[0], int(item[1]), item[2])
+        new_inventory += '\n{}, {}, {:.2f}'.format(item[0], int(item[1]), float(item[2]))
     return new_inventory
+
+def convert_for_history(inventory):
+        """[[string(item name), int(quantity)]] -> str
+    
+        Formats the inventory.
+        
+        """
+        new_inventory = ''
+        for item in inventory:
+            new_inventory += '\n{}, {}, {:.2f}'.format(item[0], float(item[1]), float(item[2]))
+        return new_inventory
 
 def revenue1(log):
     """
     Gives the added revenue of all the money of each purchase in the log.
-
     """
-    revenue = 0
+    print(log)
+    revenue = 0.0
     for item in log:
         item[1] = float(item[1])
         revenue += item[1]

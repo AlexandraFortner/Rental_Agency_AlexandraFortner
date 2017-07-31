@@ -36,7 +36,7 @@ def resupply(inventory):
         new_inventory = core.convert_back(inventory)
         file_2.write(new_inventory)
 
-def open_log(file):
+def open_log():
     """() -> [[string](item name), int(quanity)]]
     
     Opens history.txt with every purchase. Shortcut.
@@ -44,13 +44,13 @@ def open_log(file):
     """
     new_inventory = []
     
-    with open(file, 'r') as file_3:
+    with open('history.txt', 'r') as file_3:
         file_3.readline()
         inventory = file_3.readlines()
     for element in inventory:
         item, price, how_many = element.split(', ')
         new_inventory.append([(item.strip()), price.strip(), how_many.strip()])
-    return new_inventory
+    return core.convert_for_history(new_inventory)
 
 def update_inventory(item, how_many, inventory):
     """
@@ -71,3 +71,4 @@ def update_inventory(item, how_many, inventory):
     with open ('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
         file_2.write(new_inventory)
+

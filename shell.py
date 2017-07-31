@@ -48,18 +48,19 @@ def receipt(price, due_date):
 
     prints all information to user in the form of a receipt.
 
-    >>> receipt(2.00)
+    >>> receipt(2.00, 5)
     <BLANKLINE>
     ___________________________________
     |
     |Original Price: 2.0
-    |+ State Tax: 0.16
-    |+ County Tax: 0.14
+    |+ State Tax: 0.14
+    |+ County Tax: 0.12
     |Due In: 5 days.
-    |Total: 2.3000000000000003
+    |Total: 7.26
     |__________________________________
     <BLANKLINE>
     Here's your receipt! Thank you for shopping with us!
+    ''
     """
     revenue = 0
     inventory = 0

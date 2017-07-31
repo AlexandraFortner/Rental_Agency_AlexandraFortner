@@ -84,9 +84,9 @@ def opening_message():
 
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n')
 
-    print('To exit this application, click "q". Type Below, Please:\n')
 def choose_the_audio_file():
     while True:
+        print('To exit this application, click "q". Type Below, Please:\n')
         listey = disk.open_log('inventory.txt')
         first = slow_type('\n-What Audio File would you like to rent today?\n\n-').title()
         
@@ -208,7 +208,7 @@ def pay_deposit_and_rent(s, a, x):
 #         if returning == '1':
 
 def employee_or_customer_choice():
-    log = disk.open_log()
+    log = disk.open_log('history.txt')
     print((pretty_border('Welcome to Arkham Asylum Library Files! Where the villains of Gotham record '
                         'Audio Files, Available to rent to the public!')))
     while True:
@@ -220,12 +220,12 @@ def employee_or_customer_choice():
         elif employee_or_customer == '2':
             continuing_customer()
         else:
-            print('\n\nInvalid. Try again.\n\n')
+            print('\n\nInvalid. Try again\n')
 
 def continuing_employee():
     while True:
-        log = disk.open_log()
-        print('\n\nWhat would you like to do?\n\n')
+        log = disk.open_log('history.txt')
+        print('\nWhat would you like to do?\n\n')
         choosey = slow_type('1. See inventory.\n2. See revenue.\n3. See past transactions.\n\n-').title()
 
         if choosey == 'Q':
@@ -237,14 +237,14 @@ def continuing_employee():
             print('\n')
             print(pretty_border(rev))
         elif choosey == '3':
-            print(disk.open_log())
+            print(disk.open_log('history.txt'))
         else:
             print('\nInvalid input. Try again.\n\n')
 
 def continuing_customer():
     while True:
         log = disk.open_log('history.txt')
-        print('\n\nWould you like to:\n\n')
+        print('\n\nWhat would you like to do?\n\n')
         choose = slow_type('1. Return an Audio File.\n2. Rent an Audio File.\n3. Exit.\n\n-').title()
         if choose == 'Q':
             quit()

@@ -90,13 +90,12 @@ def convert_back(inventory):
         new_inventory += '\n{}, {}, {:.2f}'.format(item[0], int(item[1]), item[2])
     return new_inventory
 
-def revenue1(revenue, inventory):
+def revenue1(log):
     """
-    
     Gives the added revenue of all the money of each purchase in the log.
 
     """
-    log = GasPump_disk.open_log('history.txt')
+    revenue = 0
     for item in log:
         item[1] = float(item[1])
         revenue += item[1]

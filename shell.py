@@ -78,8 +78,7 @@ def receipt(price, due_date):
     return ''
 
 def opening_message():
-    print((pretty_border('Welcome to Arkham Asylum Library Files! Where the villains of Gotham record '
-                        'Audio Files, Available to rent to the public!')))
+    print('\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     
     
     listey = disk.open_inventory()
@@ -140,6 +139,7 @@ def pay_deposit_and_rent(s, a):
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
             print(receipt(price, a))
             disk.append_history(item, price, 1)
+            disk.update_inventory(item, 1, listey)
             disk.resupply(listey)
             break
         elif s == '2':
@@ -149,6 +149,7 @@ def pay_deposit_and_rent(s, a):
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
             print(receipt(price, a))
             disk.append_history(item, price, 1)
+            disk.update_inventory(item, 1, listey)
             disk.resupply(listey)
             break
         elif s == '3':
@@ -158,6 +159,7 @@ def pay_deposit_and_rent(s, a):
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
             print(receipt(price, a))
             disk.append_history(item, price, 1)
+            disk.update_inventory(item, 1, listey)
             disk.resupply(listey)
             break
         elif s == '4':
@@ -167,6 +169,7 @@ def pay_deposit_and_rent(s, a):
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
             print(receipt(price, a))
             disk.append_history(item, price, 1)
+            disk.update_inventory(item, 1, listey)
             disk.resupply(listey)
             break
         elif s == '5':
@@ -184,17 +187,54 @@ def pay_deposit_and_rent(s, a):
             input('got: {}'.format(s))
     return price
 
-
-# def continuing(log):
+# def returning_audio_file():
 #     while True:
-#         keep_going = slow_type('\nIs there anything else you need?\n')
+#         listey = disk.open_inventory()
+#         listey1 = make_pretty(listey)
+#         print(listey1)
+
+#         returning = slow_type('\nWhich audio file do you need to return?\n\n-')
+#         if returning == '1':
+
+def continuing(log):
+    while True:
+        print((pretty_border('Welcome to Arkham Asylum Library Files! Where the villains of Gotham record '
+                        'Audio Files, Available to rent to the public!')))
+        print('\n!~Input Q to quit the program at any time~!\n\nWould you like to:\n\n')
+        choose = slow_type('1. Return an Audio File.\n2. Rent an Audio File.\n3. See the revenue.\n4. Exit.\n\n-').title()
+        if choose == 'Q':
+            quit()
+        # elif choose == '1':
+        #   returning_audio_file()
+
+        elif choose == '2':
+            opening_message()
+            s = choose_the_audio_file()
+            a = due()
+            w = pay_deposit_and_rent(s, a)
+            break
+        elif choose == '3':
+            code = slow_type('\nThis option is only for administrators. Please input the password to proceed.\n\n-')
+            if code == '758110':
+                print('\n')
+                print(core.revenue1(log))
+            else:
+                print('\nSorry, that\'s incorrect!\n')
+        elif choose == '4':
+            exit()
+        else:
+            print('Invalid input. Try again.')
+
+
 #revenue function call?
+# BELOW USED TO BE IN MAIN:
+#  opening_message()
+#     s = choose_the_audio_file()
+#     a = due()
+#     w = pay_deposit_and_rent(s, a)
         
 def main():
-    opening_message()
-    s = choose_the_audio_file()
-    a = due()
-    w = pay_deposit_and_rent(s, a)
-    
+    log = disk.open_log('history.txt')
+    continuing(log)
 if __name__ == '__main__':
     main()

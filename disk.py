@@ -29,8 +29,8 @@ def resupply(inventory):
 
     """
     for item in inventory:
-        if item[1] <= 100:
-            item[1] = 1000
+        if item[1] <= 10:
+            item[1] = 100
 
     with open ('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)

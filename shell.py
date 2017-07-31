@@ -137,9 +137,10 @@ def pay_deposit_and_rent(s, a):
             deposit = core.deposit(40.00)
             price = core.rent_price(40.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
+            how_many1 = slow_type('\nHow many would you like to rent?\n\n-')
             print(receipt(price, a))
-            disk.append_history(item, price, 1)
-            disk.update_inventory(item, 1, listey)
+            disk.append_history(item, price, how_many1)
+            disk.update_inventory(item, how_many1, listey)
             disk.resupply(listey)
             break
         elif s == '2':
@@ -147,9 +148,10 @@ def pay_deposit_and_rent(s, a):
             deposit = core.deposit(20.00)
             price = core.rent_price(20.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
+            how_many1 = slow_type('\nHow many would you like to rent?\n\n-')
             print(receipt(price, a))
-            disk.append_history(item, price, 1)
-            disk.update_inventory(item, 1, listey)
+            disk.append_history(item, price, how_many1)
+            disk.update_inventory(item, how_many1, listey)
             disk.resupply(listey)
             break
         elif s == '3':
@@ -157,9 +159,10 @@ def pay_deposit_and_rent(s, a):
             deposit = core.deposit(30.50)
             price = core.rent_price(30.50, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
+            how_many1 = slow_type('\nHow many would you like to rent?\n\n-')
             print(receipt(price, a))
-            disk.append_history(item, price, 1)
-            disk.update_inventory(item, 1, listey)
+            disk.append_history(item, price, how_many1)
+            disk.update_inventory(item, how_many1, listey)
             disk.resupply(listey)
             break
         elif s == '4':
@@ -167,9 +170,10 @@ def pay_deposit_and_rent(s, a):
             deposit = core.deposit(36.00)
             price = core.rent_price(36.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
+            how_many1 = slow_type('\nHow many would you like to rent?\n\n-')
             print(receipt(price, a))
-            disk.append_history(item, price, 1)
-            disk.update_inventory(item, 1, listey)
+            disk.append_history(item, price, how_many1)
+            disk.update_inventory(item, how_many1, listey)
             disk.resupply(listey)
             break
         elif s == '5':
@@ -178,9 +182,10 @@ def pay_deposit_and_rent(s, a):
             price = core.rent_price(12.00, deposit)
             rental = 1.0
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
+            how_many1 = slow_type('\nHow many would you like to rent?\n\n-')
             print(receipt(price, a))
-            disk.append_history(item, price, 1)
-            disk.update_inventory(item, 1, listey)
+            disk.append_history(item, price, how_many1)
+            disk.update_inventory(item, how_many1, listey)
             disk.resupply(listey)
             break
         else:
@@ -197,10 +202,10 @@ def pay_deposit_and_rent(s, a):
 #         if returning == '1':
 
 def continuing(log):
-    while True:
-        print((pretty_border('Welcome to Arkham Asylum Library Files! Where the villains of Gotham record '
+    print((pretty_border('Welcome to Arkham Asylum Library Files! Where the villains of Gotham record '
                         'Audio Files, Available to rent to the public!')))
-        print('\n!~Input Q to quit the program at any time~!\n\nWould you like to:\n\n')
+    while True:
+        print('\n\nWould you like to:\n\n')
         choose = slow_type('1. Return an Audio File.\n2. Rent an Audio File.\n3. See the revenue.\n4. Exit.\n\n-').title()
         if choose == 'Q':
             quit()
@@ -212,12 +217,12 @@ def continuing(log):
             s = choose_the_audio_file()
             a = due()
             w = pay_deposit_and_rent(s, a)
-            break
         elif choose == '3':
             code = slow_type('\nThis option is only for administrators. Please input the password to proceed.\n\n-')
             if code == '758110':
+                rev = str(core.revenue1(log))
                 print('\n')
-                print(core.revenue1(log))
+                print(pretty_border(rev))
             else:
                 print('\nSorry, that\'s incorrect!\n')
         elif choose == '4':

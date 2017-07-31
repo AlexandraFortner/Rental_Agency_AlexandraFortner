@@ -20,3 +20,6 @@ def test_rent_price():
     assert core.rent_price(0.0, 12) == '13.0'
     assert core.rent_price(0, 0) == 0.0
     assert core.rent_price(-23, -1) == 0.0
+
+# def test_revenue1():
+#     assert core.revenue1('history.txt') == 55.05

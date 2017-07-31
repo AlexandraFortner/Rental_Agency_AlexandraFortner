@@ -1,4 +1,4 @@
-import core
+import core, shell
 def open_inventory():
     """() -> [[string(item name), int(quantity)]]
     
@@ -17,35 +17,21 @@ def open_inventory():
 def append_history(item, price, how_many):
     '''str, float, float -> str
     
-    Adds to the log with every purchase.
+    Adds to the log(history.txt) with every purchase.
     '''
     with open('history.txt', 'a') as file_1:
         file_1.write(item + " , " + str(price)+ " , " + str(how_many) + "\n")
 
-def resupply(item, inventory):
+def resupply(inventory):
     """() -> None
 
-    If a certain item stock is lower than or at 100, restocks to 1000.
+    If any item stock is lower than or at 100, restocks to 1000.
 
     """
+    for item in inventory:
+        if item[1] <= 100:
+            item[1] = 1000
 
-    if item == '1. Dr. Crane\'s "A Study In Fear"':
-        if inventory[0][1] <= 100:
-            inventory[0][1] = 1000
-    elif item == '2. Jervis Tetch\'s "Wonderful Wonderland Fairy Tales!"':
-        if inventory[1][1] <= 100:
-            inventory[1][1] = 1000
-    elif item == '3. Edward Nygma\'s "Riddles To Blow The Mind...Literally!"':
-        if inventory[2][1] <= 100:
-            inventory[2][1] = 1000
-    elif item == '4. Bane\'s "Breaking The Bat: It\'s A Snap!"':
-        if inventory[1][1] <= 100:
-            inventory[1][1] = 1000
-    elif item == '5. Hugo Strange\'s "The Dark History Of The Medical Practice"':
-        if inventory[1][1] <= 100:
-            inventory[1][1] = 1000
-   
-  
     with open ('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
         file_2.write(new_inventory)
@@ -71,17 +57,17 @@ def update_inventory(item, how_many, inventory):
     Updates the inventory with every purchase.
     """
     how_many = int(how_many)
-    if item == '1. Dr. Crane\'s "A Study In Fear"':
+    if item == 'Dr. Crane\'s "A Study In Fear"':
         inventory[0][1] = inventory[0][1] - how_many
-    elif item == '2. Jervis Tetch\'s "Wonderful Wonderland Fairy Tales!"':
+    elif item == 'Jervis Tetch\'s "Wonderful Wonderland Fairy Tales!"':
         inventory[1][1] = inventory[1][1] - how_many
-    elif item == '3. Edward Nygma\'s "Riddles To Blow The Mind...Literally!"':
+    elif item == 'Edward Nygma\'s "Riddles To Blow The Mind...Literally!"':
         inventory[2][1] = inventory[2][1] - how_many
-    elif item == '4. Bane\'s "Breaking The Bat: It\'s A Snap!"':
+    elif item == 'Bane\'s "Breaking The Bat: It\'s A Snap!"':
         inventory[3][1] = inventory[3][1] - how_many
-    elif item == '5. Hugo Strange\'s "The Dark History Of The Medical Practice"':
+    elif item == 'Hugo Strange\'s "The Dark History Of The Medical Practice"':
         inventory[4][1] = inventory[4][1] - how_many
 
     with open ('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
-        file_2.write(new_inventory) 
+        file_2.write(new_inventory)

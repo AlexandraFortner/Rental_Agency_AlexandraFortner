@@ -37,8 +37,6 @@ def make_pretty(inventory):
     for item in inventory:
        stringy += "\n {:<60}{:>40}".format(item[0], "Stocked Inventory: " + str(item[1]))
     return stringy + '\n\n'
-
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #FUNCTIONS FOR DECORATION END
 #MAIN CODE BELOW
@@ -132,57 +130,71 @@ def due():
     return str(due_date)
 def pay_deposit_and_rent(s, a):
     while True:
-        listey = disk.open_log('inventory.txt')
+        listey = disk.open_inventory()
         if s == 'Q':
             quit()
         elif s == '1':
+            item = str(listey[0][0]).strip('1. ')
             deposit = core.deposit(40.00)
             price = core.rent_price(40.00, deposit)
-            print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
+            print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
             print(receipt(price, a))
-            disk.append_history(str(listey[0][0]).strip('1. '), price, 1)
+            disk.append_history(item, price, 1)
+            disk.resupply(listey)
             break
         elif s == '2':
+            item = str(listey[1][0].strip('2. '))
             deposit = core.deposit(20.00)
             price = core.rent_price(20.00, deposit)
-            print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
+            print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
             print(receipt(price, a))
-            disk.append_history(str(listey[1][0]).strip('2. '), price, 1)
+            disk.append_history(item, price, 1)
+            disk.resupply(listey)
             break
         elif s == '3':
+            item = str(listey[2][0]).strip('3. ')
             deposit = core.deposit(30.50)
             price = core.rent_price(30.50, deposit)
-            print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
+            print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
             print(receipt(price, a))
-            disk.append_history(str(listey[2][0]).strip('3. '), price, 1)
+            disk.append_history(item, price, 1)
+            disk.resupply(listey)
             break
         elif s == '4':
+            item = str(listey[3][0]).strip('4. ')
             deposit = core.deposit(36.00)
             price = core.rent_price(36.00, deposit)
-            print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
+            print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
             print(receipt(price, a))
-            disk.append_history(str(listey[3][0]).strip('4. '), price, 1)
+            disk.append_history(item, price, 1)
+            disk.resupply(listey)
             break
         elif s == '5':
+            item = (str(listey[4][0]).strip('5. '))
             deposit = core.deposit(12.00)
             price = core.rent_price(12.00, deposit)
             rental = 1.0
-            print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape. With the rental fee, your total is ' + price + '.')
+            print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
             print(receipt(price, a))
-            disk.append_history(str(listey[4][0]).strip('5. '), price, 1)
-            disk.update_inventory(str(listey[4][0]).strip('5. '), 1, 'inventory.txt')
+            disk.append_history(item, price, 1)
+            disk.update_inventory(item, 1, listey)
+            disk.resupply(listey)
             break
         else:
             input('got: {}'.format(s))
     return price
 
 
-# def continuing():
+# def continuing(log):
+#     while True:
+#         keep_going = slow_type('\nIs there anything else you need?\n')
+#revenue function call?
         
 def main():
     opening_message()
     s = choose_the_audio_file()
     a = due()
     w = pay_deposit_and_rent(s, a)
+    
 if __name__ == '__main__':
     main()

@@ -58,6 +58,7 @@ def deposit(price):
     else:
         price1 = price / 10
         return str(price1)
+
 def rent_price(pricey, deposit):
     """(float, float) -> float
 
@@ -86,5 +87,17 @@ def convert_back(inventory):
     """
     new_inventory = ''
     for item in inventory:
-        new_inventory += '\n{}, {:.2f}, {:.2f}'.format(item[0], item[1], item[2])
+        new_inventory += '\n{}, {}, {:.2f}'.format(item[0], int(item[1]), item[2])
     return new_inventory
+
+def revenue1(revenue, inventory):
+    """
+    
+    Gives the added revenue of all the money of each purchase in the log.
+
+    """
+    log = GasPump_disk.open_log('history.txt')
+    for item in log:
+        item[1] = float(item[1])
+        revenue += item[1]
+    return revenue

@@ -1,5 +1,4 @@
 #DO NOT IMPORT ANY FILE
-import random
 
 def CountySalesTax(price):
     """(float) -> float
@@ -123,10 +122,3 @@ def math_for_receipt(price, due_date):
     totally = float(rental_price * due_date)
     totally1 = totally + total
     return totally1
-
-def id_letters_random(log):
-    id1 = ''
-    choicey1 = 'F', 'u', 'A', 'Y', 'E', 'd', 'k', 'a', 'i', 'm', 'e', 'o', 'w'
-    for i in range(5):
-        id1 += random.choice(choicey1)
-    return id1

@@ -1,4 +1,4 @@
-import core, disk, time, sys
+import core, disk, time, sys, random
 
 #ARKHAM ASYLUM AUDIO FILE RENTAL AGENCY
 #FUNCTIONS FOR DECORATION BEGIN
@@ -38,8 +38,17 @@ def make_pretty(inventory):
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #FUNCTIONS FOR DECORATION END
 #MAIN CODE BELOW
+def id_letters_random(log):
+    """
+    Generates a random string of certain specified letters. For Id purposes.
+    """
+    id1 = ''
+    choicey1 = 'F', 'u', 'A', 'Y', 'E', 'd', 'k', 'a', 'i', 'm', 'e', 'o', 'w'
+    for i in range(5):
+        id1 += random.choice(choicey1)
+    return id1
 
-def receipt(price, due_date):
+def receipt(price, due_date, id2):
     """(float) -> float
 
     prints all information to user in the form of a receipt.
@@ -64,6 +73,7 @@ def receipt(price, due_date):
     print('|+ County Tax: {}'.format(core.CountySalesTax(price)))
     print('|Due In: {} days.'.format(due_date))
     print('|Total: {}'.format(totally1))
+    print('|Id: {} REMEMBER THIS ID.'.format(id2))
     print('|____________________________________\n\nHere\'s your receipt! Thank you for shopping with us!')
     return ''
 
@@ -141,8 +151,8 @@ def pay_deposit_and_rent(s, a, x):
             deposit = core.deposit(40.00)
             price = core.rent_price(40.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
-            print(receipt(price, a))
-            id2 = core.id_letters_random(log)
+            id2 = id_letters_random(log)
+            print(receipt(price, a, id2))
             disk.append_history(item, price, x, id2)
             disk.update_inventory(item, x, listey)
             disk.resupply(listey)
@@ -152,8 +162,8 @@ def pay_deposit_and_rent(s, a, x):
             deposit = core.deposit(20.00)
             price = core.rent_price(20.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
-            print(receipt(price, a))
-            id2 = core.id_letters_random(log)
+            id2 = id_letters_random(log)
+            print(receipt(price, a, id2))
             disk.append_history(item, y, x, id2)
             disk.update_inventory(item, x, listey)
             disk.resupply(listey)
@@ -163,8 +173,8 @@ def pay_deposit_and_rent(s, a, x):
             deposit = core.deposit(30.50)
             price = core.rent_price(30.50, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
-            print(receipt(price, a))
-            id2 = core.id_letters_random(log)
+            id2 = id_letters_random(log)
+            print(receipt(price, a, id2))
             disk.append_history(item, price, x, id2)
             disk.update_inventory(item, x, listey)
             disk.resupply(listey)
@@ -174,8 +184,8 @@ def pay_deposit_and_rent(s, a, x):
             deposit = core.deposit(36.00)
             price = core.rent_price(36.00, deposit)
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
-            print(receipt(price, a))
-            id2 = core.id_letters_random(log)
+            id2 = id_letters_random(log)
+            print(receipt(price, a, id2))
             disk.append_history(item, price, x, id2)
             disk.update_inventory(item, x, listey)
             disk.resupply(listey)
@@ -186,8 +196,8 @@ def pay_deposit_and_rent(s, a, x):
             price = core.rent_price(12.00, deposit)
             rental = 1.0
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
-            print(receipt(price, a))
-            id2 = core.id_letters_random(log)
+            id2 = id_letters_random(log)
+            print(receipt(price, a, id2))
             disk.append_history(item, price, x, id2)
             disk.update_inventory(item, x, listey)
             disk.resupply(listey)
@@ -196,14 +206,17 @@ def pay_deposit_and_rent(s, a, x):
             input('got: {}'.format(s))
     return price
 
-# def returning_audio_file():
-#     while True:
-#         listey = disk.open_inventory()
-#         listey1 = make_pretty(listey)
-#         print(listey1)
+def returning_audio_file():
+    while True:
+        listey = disk.open_log('history.txt')
 
-#         returning = slow_type('\nWhich audio file do you need to return?\n\n-')
-#         if returning == '1':
+        returning = slow_type('\nPlease input your Id on your previous receipt.\n\n-')
+        for item in listey:
+            if returning == item[3]:
+                disk.returning_update_history(returning, 'history.txt')
+                break
+            else:
+                print('\nSorry! That is not a valid code for our past transactions! Try again!\n\n-')
 
 def employee_or_customer_choice():
     # log = disk.open_log('history.txt')
@@ -251,9 +264,8 @@ def continuing_customer():
         choose = slow_type('1. Return an Audio File.\n2. Rent an Audio File.\n3. Exit to beginning.\n4. Exit the program.\n\n-').title()
         if choose == 'Q':
             quit()
-        # elif choose == '1':
-        #   returning_audio_file()
-
+        elif choose == '1':
+          returning_audio_file()
         elif choose == '2':
             opening_message()
             s = choose_the_audio_file()

@@ -1,4 +1,4 @@
-import core, shell
+import core
 def open_inventory():
     """() -> [[string(item name), int(quantity)]]
     
@@ -66,3 +66,13 @@ def update_inventory(item, how_many1, inventory):
         new_inventory = core.convert_back(inventory)
         file_2.write(new_inventory)
 
+def returning_update_history(id_number, log):
+    """
+    When customer is returning audio file with
+    their specific inputted code, update the history.
+    """
+    # with open(log, 'w') as file:
+    #     new_file = 
+    # if id_number == log[3]:
+    #rewrite it
+    

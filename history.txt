@@ -1,6 +1,3 @@
-(Item name) ,(Price), (how_many), (id_letters)
-Edward Nygma's "Riddles To Blow The Mind...Literally!" , 4.05 , 4, iYdek
-Hugo Strange's "The Dark History Of The Medical Practice" , 2.2 , 1, Emodw
-Bane's "Breaking The Bat: It's A Snap!" , 4.6 , 6, eekEe
-Edward Nygma's "Riddles To Blow The Mind...Literally!" , 4.05 , 1, Ewied
-Edward Nygma's "Riddles To Blow The Mind...Literally!" , 4.05 , 4, koome
+
+Edward Nygma's "Riddles To Blow The Mind...Literally!", 4.05, 4, iYdek
+Bane's "Breaking The Bat: It's A Snap!", 4.6, 6, eekEe

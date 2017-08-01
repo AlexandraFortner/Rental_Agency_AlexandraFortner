@@ -122,3 +122,12 @@ def math_for_receipt(price, due_date):
     totally = float(rental_price * due_date)
     totally1 = totally + total
     return totally1
+
+def convert_into_string(listey):
+    """
+    Converts list into a string.
+    """
+    new_string = ''
+    for item in listey:
+        new_string += '\n{}, {}, {}, {}'.format(str(item[0]), str(item[1]), str(item[2]), str(item[3]))
+    return new_string

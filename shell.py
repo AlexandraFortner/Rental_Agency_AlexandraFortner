@@ -1,5 +1,4 @@
 import core, disk, time, sys, random
-
 #ARKHAM ASYLUM AUDIO FILE RENTAL AGENCY
 #FUNCTIONS FOR DECORATION BEGIN
 #BELOW
@@ -69,11 +68,11 @@ def receipt(price, due_date, id2):
     """
     totally1 = core.math_for_receipt(price, due_date)
     print('\n___________________________________\n|\n|Original Price: {}'.format(price))
-    print('|+ State Tax: {}'.format(core.StateSalesTax(price)))
-    print('|+ County Tax: {}'.format(core.CountySalesTax(price)))
+    print('|+ State Tax: {:.2f}'.format(core.StateSalesTax(price)))
+    print('|+ County Tax: {:.2f}'.format(core.CountySalesTax(price)))
     print('|Due In: {} days.'.format(due_date))
-    print('|Total: {}'.format(totally1))
-    print('|Id: {} REMEMBER THIS ID.'.format(id2))
+    print('|Total: {:.2f}'.format(totally1))
+    print('|Id: {} <-REMEMBER THIS ID.'.format(id2))
     print('|____________________________________\n\nHere\'s your receipt! Thank you for shopping with us!')
     return ''
 
@@ -164,7 +163,7 @@ def pay_deposit_and_rent(s, a, x):
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item, y, x, id2)
+            disk.append_history(item, x, id2)
             disk.update_inventory(item, x, listey)
             disk.resupply(listey)
             break
@@ -209,15 +208,15 @@ def pay_deposit_and_rent(s, a, x):
 def returning_audio_file():
     while True:
         listey = disk.open_log('history.txt')
-
         returning = slow_type('\nPlease input your Id on your previous receipt.\n\n-')
+        if returning == 'q':
+            quit()
         for item in listey:
             if returning == item[3]:
-                disk.returning_update_history(returning, 'history.txt')
-                break
-            else:
-                print('\nSorry! That is not a valid code for our past transactions! Try again!\n\n-')
-
+                listey.remove(item)
+                disk.returning_update_history(listey)
+                return None
+        print('\nSorry! That is not a valid code for our past transactions! Try again!\n')
 def employee_or_customer_choice():
     # log = disk.open_log('history.txt')
     print((pretty_border('Welcome to Arkham Asylum Library Files! Where the villains of Gotham record '
@@ -260,7 +259,7 @@ def continuing_employee():
 def continuing_customer():
     while True:
         # log = disk.open_log('history.txt')
-        print('\n\nWhat would you like to do?\n\n')
+        print('\nWhat would you like to do?\n\n')
         choose = slow_type('1. Return an Audio File.\n2. Rent an Audio File.\n3. Exit to beginning.\n4. Exit the program.\n\n-').title()
         if choose == 'Q':
             quit()

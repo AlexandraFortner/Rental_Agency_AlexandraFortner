@@ -134,7 +134,7 @@ def how_many_tapes():
         elif how_many2 > 100:
             print('\nSorry, we have a limit of 100 audio tape copies. Please input a lower number.\n\n-')
         elif how_many2 <= 100:
-            return how_many2
+            return how_many2 #goes to pay_deposit_and_rent, then moves to update_inventory in disk.py
             break
         else:
             print('\nInvalid input. Try again.\n\n-')            
@@ -163,7 +163,7 @@ def pay_deposit_and_rent(s, a, x):
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item, x, id2)
+            disk.append_history(item, y, x, id2)
             disk.update_inventory(item, x, listey)
             disk.resupply(listey)
             break
@@ -208,6 +208,7 @@ def pay_deposit_and_rent(s, a, x):
 def returning_audio_file():
     while True:
         listey = disk.open_log('history.txt')
+        inventory = disk.open_inventory()
         returning = slow_type('\nPlease input your Id on your previous receipt.\n\n-')
         if returning == 'q':
             quit()
@@ -215,8 +216,10 @@ def returning_audio_file():
             if returning == item[3]:
                 listey.remove(item)
                 disk.returning_update_history(listey)
+                disk.update_inventory_returning(returning, returning[2], inventory)
                 return None
         print('\nSorry! That is not a valid code for our past transactions! Try again!\n')
+
 def employee_or_customer_choice():
     # log = disk.open_log('history.txt')
     print((pretty_border('Welcome to Arkham Asylum Library Files! Where the villains of Gotham record '

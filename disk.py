@@ -19,7 +19,7 @@ def append_history(item, price, how_many, id_letters):
     Adds to the log(history.txt) with every purchase.
     '''
     with open('history.txt', 'a') as file_1:
-        file_1.write(item + " , " + str(price)+ " , " + str(how_many) + ", " + str(id_letters) + "\n")
+        file_1.write('\n' + item + " , " + str(price)+ " , " + str(how_many) + ", " + str(id_letters))
 def resupply(inventory):
     """() -> None
 
@@ -34,9 +34,7 @@ def resupply(inventory):
         file_2.write(new_inventory)
 def open_log(file):
     """() -> [[string](item name), int(quanity)]]
-    
     Opens history.txt with every purchase. Shortcut.
-
     """
     new_inventory = []
     with open(file, 'r') as file_3:
@@ -48,15 +46,42 @@ def open_log(file):
     return new_inventory
 def update_inventory(item, how_many1, inventory):
     """
-    Updates the inventory with every purchase.
+    Updates the inventory to subtract how_many with every rent.
     """
     how_many = int(how_many1)
-    for thing in inventory:
-        ind = inventory.index(thing)
-        inventory[ind][1] -= how_many
+    if item == 'Dr. Crane\'s "A Study In Fear"':
+        inventory[0][1] -= how_many
+    elif item == 'Jervis Tetch\'s "Wonderful Wonderland Fairy Tales!"':
+        inventory[1][1] -= how_many
+    elif item == 'Edward Nygma\'s "Riddles To Blow The Mind...Literally!"':
+        inventory[2][1] -= how_many
+    elif item == 'Bane\'s "Breaking The Bat: It\'s A Snap!"':
+        inventory[3][1] -= how_many
+    elif item == 'Hugo Strange\'s "The Dark History Of The Medical Practice"':
+        inventory[4][1] -= how_many        
     with open ('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
         file_2.write(new_inventory)
+
+def update_inventory_returning(item, how_many, inventory):
+    """
+    Updates the inventory to add from returning it.
+    """
+    how_many1 = int(how_many)
+    if item == 'Dr. Crane\'s "A Study In Fear"':
+        inventory[0][1] += how_many
+    elif item == 'Jervis Tetch\'s "Wonderful Wonderland Fairy Tales!"':
+        inventory[1][1] += how_many
+    elif item == 'Edward Nygma\'s "Riddles To Blow The Mind...Literally!"':
+        inventory[2][1] += how_many
+    elif item == 'Bane\'s "Breaking The Bat: It\'s A Snap!"':
+        inventory[3][1] += how_many
+    elif item == 'Hugo Strange\'s "The Dark History Of The Medical Practice"':
+        inventory[4][1] += how_many   
+    with open ('inventory.txt', 'w') as file_2:
+        new_inventory = core.convert_back(inventory)
+        file_2.write(new_inventory)
+
 def returning_update_history(log):
     """
     When customer is returning audio file with

@@ -1,4 +1,5 @@
 #DO NOT IMPORT ANY FILE
+import random
 
 def CountySalesTax(price):
     """(float) -> float
@@ -96,18 +97,36 @@ def convert_for_history(inventory):
         Formats the inventory.
         
         """
-        new_inventory = ''
+        new_inventory = []
         for item in inventory:
-            new_inventory += '\n{}, {}, {:.2f}'.format(item[0], float(item[1]), float(item[2]))
+            new_inventory += '\n{}, {}, {:.2f}'.format(item[0][1], float(item[1][1]), float(item[2][1]))
         return new_inventory
 
-def revenue1(log):
+def revenue1(file):
     """
-    Gives the added revenue of all the money of each purchase in the log.
+    Gives the added revenue of all the money of each purchase in the log(history.txt).
     """
-    print(log)
     revenue = 0.0
-    for item in log:
-        item[1] = float(item[1])
+    for item in file:
         revenue += item[1]
     return revenue
+
+def math_for_receipt(price, due_date):
+    """
+    Calculates the math needed for the receipt.
+    """
+    revenue = 0
+    inventory = 0 
+    rental_price = 1.0
+    total = float(price) + StateSalesTax(price) + CountySalesTax(price)
+    due_date = float(due_date)
+    totally = float(rental_price * due_date)
+    totally1 = totally + total
+    return totally1
+
+def id_letters_random(log):
+    id1 = ''
+    choicey1 = 'F', 'u', 'A', 'Y', 'E', 'd', 'k', 'a', 'i', 'm', 'e', 'o', 'w'
+    for i in range(5):
+        id1 += random.choice(choicey1)
+    return id1

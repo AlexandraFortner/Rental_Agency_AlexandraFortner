@@ -1,7 +1,3 @@
-(Item name) ,(Price), (how_many)
-Dr. Crane's "A Study In Fear" , 5.0 , 1
-Hugo Strange's "The Dark History Of The Medical Practice" , 2.2 , 1
-Edward Nygma's "Riddles To Blow The Mind...Literally!" , 4.05 , 1
-Hugo Strange's "The Dark History Of The Medical Practice" , 2.2 , 1
-Hugo Strange's "The Dark History Of The Medical Practice" , 2.2 , 1
-Hugo Strange's "The Dark History Of The Medical Practice" , 2.2 , 1
+(Item name) ,(Price), (how_many), (id_letters)
+Edward Nygma's "Riddles To Blow The Mind...Literally!" , 4.05 , 4, iYdek
+Hugo Strange's "The Dark History Of The Medical Practice" , 2.2 , 1, Emodw

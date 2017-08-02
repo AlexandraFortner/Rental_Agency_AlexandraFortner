@@ -218,6 +218,7 @@ def returning_audio_file():
                 thingy = item
         for thing in to_delete:
             log.remove(item)
+        print('\nAmount of Deposit Returned: {}'.format(item[1]))
         disk.returning_update_history(log)
         disk.update_inventory_returning(returning, thingy[2], inventory)
         return None

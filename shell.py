@@ -211,7 +211,7 @@ def returning_comics():
 
 def employee_or_customer_choice():
     # log = disk.open_log('history.txt')
-    print((pretty_border('Welcome to Arkham Asylum Comic Book Store!')))
+    print((pretty_border('Welcome to The Arkham Asylum!')))
     while True:
         employee_or_customer = slow_type('\nAre you:\n\n1.An Employee\n2.A Customer.\n\n-').title()
         if employee_or_customer == 'Q':

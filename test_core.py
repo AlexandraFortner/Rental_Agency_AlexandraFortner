@@ -21,8 +21,14 @@ def test_rent_price():
     assert core.rent_price(0, 0) == 0.0
     assert core.rent_price(-23, -1) == 0.0
 
-# def test_convert_back():
-#     assert core.convert_back('inventory.txt') == """\n1. Dr. Crane's "A Study In Fear", 29, 40.00\n2. Jervis Tetch's "Wonderful Wonderland Fairy Tales!", 100, 20.00\n3. Edward Nygma's "Riddles To Blow The Mind...Literally!", 99, 30.50\n4. Bane's "Breaking The Bat: It's A Snap!", 100, 36.00\n5. Hugo Strange's "The Dark History Of The Medical Practice", 96, 12.00"""
-
+def test_convert_back():
+    inventory = [['Crane', 29, 40.00],['Jervis', 100, 20.00],['Edward', 99, 30.50]]
+    assert core.convert_back(inventory) == '\nCrane, 29, 40.00\nJervis, 100, 20.00\nEdward, 99, 30.50'
 def test_revenue1():
-    assert core.revenue1('history.txt') == 4.05
+    inventory = [['Edward Nygma\'s "Riddles To Blow The Mind...Literally!"', 4.05, 1, 'oeEae']]
+    assert core.revenue1(inventory) == 4.05
+def test_math_for_receipt():
+    assert core.math_for_receipt(2.00, 2) == 4.26
+def test_convert_into_string():
+    inventory = [['Edward', 4.05, 1, 'oeEae'],['Nygma' , 4.05 , 2, 'odYku']]
+    assert core.convert_into_string(inventory) == '\nEdward, 4.05, 1, oeEae\nNygma, 4.05, 2, odYku'

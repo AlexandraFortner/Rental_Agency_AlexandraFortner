@@ -90,20 +90,10 @@ def convert_back(inventory):
         new_inventory += '\n{}, {}, {:.2f}'.format(item[0], int(item[1]), float(item[2]))
     return new_inventory
 
-def convert_for_history(inventory):
-        """[[string(item name), int(quantity)]] -> str
-    
-        Formats the inventory.
-        
-        """
-        new_inventory = []
-        for item in inventory:
-            new_inventory += '\n{}, {}, {:.2f}'.format(item[0][1], float(item[1][1]), float(item[2][1]))
-        return new_inventory
 
 def revenue1(file):
     """
-    Gives the added revenue of all the money of each purchase in the log(history.txt).
+    Gives the added revenue of all the money of each purchase in the log (history.txt).
     """
     revenue = 0.0
     for item in file:

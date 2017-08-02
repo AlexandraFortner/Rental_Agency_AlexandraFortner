@@ -234,8 +234,8 @@ def continuing_employee():
         elif choosey == '1':
             opening_message()
         elif choosey == '2':
-            revenue1 = disk.open_log('history.txt')
-            rev = core.revenue1(revenue1)
+            revenue2 = disk.open_log('history.txt')
+            rev = core.revenue1(revenue2)
             print('\n')
             print(rev)
         elif choosey == '3':

@@ -44,6 +44,7 @@ def open_log(file):
         item, price, how_many, id_letters = element.split(', ')
         new_inventory.append([(item.strip()), float(price.strip()), how_many.strip(), id_letters.strip()])
     return new_inventory
+
 def update_inventory(item, how_many1, inventory):
     """
     Updates the inventory to subtract how_many with every rent.

@@ -1,6 +1,6 @@
 
-1. Dr. Crane's "A Study In Fear", 87, 40.00
+1. Dr. Crane's "A Study In Fear", 80, 40.00
 2. Jervis Tetch's "Wonderful Wonderland Fairy Tales!", 80, 20.00
-3. Edward Nygma's "Riddles To Blow The Mind...Literally!", 73, 30.50
-4. Bane's "Breaking The Bat: It's A Snap!", 80, 36.00
-5. Hugo Strange's "The Dark History Of The Medical Practice", 75, 12.00
+3. Edward Nygma's "Riddles To Blow The Mind...Literally!", 59, 30.50
+4. Bane's "Breaking The Bat: It's A Snap!", 76, 36.00
+5. Hugo Strange's "The Dark History Of The Medical Practice", 70, 12.00

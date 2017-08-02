@@ -127,14 +127,13 @@ def due():
     return str(due_date)
 def how_many_tapes():
     while True:
-        how_many1 = slow_type('\nHow many would you like to rent?\n\n-').title()
-        how_many2 = int(how_many1)
-        if how_many2 == 'Q':
+        how_many1 = int(slow_type('\nHow many would you like to rent?\n\n-').title())
+        if how_many1 == 'Q':
             exit()
-        elif how_many2 > 100:
+        elif how_many1 > 100:
             print('\nSorry, we have a limit of 100 audio tape copies. Please input a lower number.\n\n-')
-        elif how_many2 <= 100:
-            return how_many2 #goes to pay_deposit_and_rent, then moves to update_inventory in disk.py
+        elif how_many1 <= 100:
+            return how_many1 #goes to pay_deposit_and_rent, then moves to update_inventory in disk.py
             break
         else:
             print('\nInvalid input. Try again.\n\n-')            
@@ -163,7 +162,7 @@ def pay_deposit_and_rent(s, a, x):
             print('\nYou must pay a ' + deposit + ' deposit. It will be refunded after you return the Audio Tape.')
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item, y, x, id2)
+            disk.append_history(item, x, id2)
             disk.update_inventory(item, x, listey)
             disk.resupply(listey)
             break
@@ -207,17 +206,21 @@ def pay_deposit_and_rent(s, a, x):
 
 def returning_audio_file():
     while True:
-        listey = disk.open_log('history.txt')
+        log = disk.open_log('history.txt')
         inventory = disk.open_inventory()
         returning = slow_type('\nPlease input your Id on your previous receipt.\n\n-')
+        to_delete = []
         if returning == 'q':
             quit()
-        for item in listey:
-            if returning == item[3]:
-                listey.remove(item)
-                disk.returning_update_history(listey)
-                disk.update_inventory_returning(returning, returning[2], inventory)
-                return None
+        for item in log:
+            if returning == item[3]:#it's counting the third letter of the id instead of the history.txt
+                to_delete.append(returning)
+                thingy = item
+        for thing in to_delete:
+            log.remove(item)
+        disk.returning_update_history(log)
+        disk.update_inventory_returning(returning, thingy[2], inventory)
+        return None
         print('\nSorry! That is not a valid code for our past transactions! Try again!\n')
 
 def employee_or_customer_choice():

@@ -129,5 +129,5 @@ def convert_into_string(listey):
     """
     new_string = ''
     for item in listey:
-        new_string += '\n' + str(item[0]) + str(item[1]) + str(item[2]) + str(item[3])
+        new_string += '\n' + str(item[0]) + ', ' + str(item[1]) + ', ' + str(item[2]) + ', ' + str(item[3])
     return new_string

@@ -49,22 +49,7 @@ def id_letters_random(log):
 
 def receipt(price, due_date, id2):
     """(float) -> float
-
     prints all information to user in the form of a receipt.
-
-    >>> receipt(2.00, 5)
-    <BLANKLINE>
-    ___________________________________
-    |
-    |Original Price: 2.0
-    |+ State Tax: 0.14
-    |+ County Tax: 0.12
-    |Due In: 5 days.
-    |Total: 7.26
-    |__________________________________
-    <BLANKLINE>
-    Here's your receipt! Thank you for shopping with us!
-    ''
     """
     totally1 = core.math_for_receipt(price, due_date)
     print('\n___________________________________\n|\n|Original Price: {}'.format(price))
@@ -85,11 +70,11 @@ def opening_message():
 
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n')
 
-def choose_the_audio_file():
+def choose_the_comic_book():
     while True:
         print('To exit this application, click "q". Type Below, Please:\n')
         listey = disk.open_inventory()
-        first = slow_type('\n-What Audio File would you like to rent today?\n\n-').title()
+        first = slow_type('\n-What comic book would you like to rent today?\n\n-').title()
         
         if first == '1':
             print('\n•You\'ve chosen ' + str(listey[0][0]).strip('1. ') + '•')
@@ -125,13 +110,13 @@ def due():
             return due_date
             break
     return str(due_date)
-def how_many_tapes():
+def how_many_comics():
     while True:
         how_many1 = int(slow_type('\nHow many would you like to rent?\n\n-').title())
         if how_many1 == 'Q':
             exit()
         elif how_many1 > 100:
-            print('\nSorry, we have a limit of 100 audio tape copies. Please input a lower number.\n\n-')
+            print('\nSorry, we have a limit of 100 comic book copies. Please input a lower number.\n\n-')
         elif how_many1 <= 100:
             return how_many1 #goes to pay_deposit_and_rent, then moves to update_inventory in disk.py
             break
@@ -204,7 +189,7 @@ def pay_deposit_and_rent(s, a, x):
             input('got: {}'.format(s))
     return price
 
-def returning_audio_file():
+def returning_comics():
     while True:
         log = disk.open_log('history.txt')
         inventory = disk.open_inventory()
@@ -226,8 +211,7 @@ def returning_audio_file():
 
 def employee_or_customer_choice():
     # log = disk.open_log('history.txt')
-    print((pretty_border('Welcome to Arkham Asylum Library Files! Where the villains of Gotham record '
-                        'Audio Files, Available to rent to the public!')))
+    print((pretty_border('Welcome to Arkham Asylum Comic Book Store!')))
     while True:
         employee_or_customer = slow_type('\nAre you:\n\n1.An Employee\n2.A Customer.\n\n-').title()
         if employee_or_customer == 'Q':
@@ -267,16 +251,16 @@ def continuing_customer():
     while True:
         # log = disk.open_log('history.txt')
         print('\nWhat would you like to do?\n\n')
-        choose = slow_type('1. Return an Audio File.\n2. Rent an Audio File.\n3. Exit to beginning.\n4. Exit the program.\n\n-').title()
+        choose = slow_type('1. Return an comic book.\n2. Rent an comic book.\n3. Exit to beginning.\n4. Exit the program.\n\n-').title()
         if choose == 'Q':
             quit()
         elif choose == '1':
-          returning_audio_file()
+          returning_comics()
         elif choose == '2':
             opening_message()
-            s = choose_the_audio_file()
+            s = choose_the_comic_book()
             a = due()
-            x = how_many_tapes()
+            x = how_many_comics()
             w = pay_deposit_and_rent(s, a, x)
         elif choose == '3':
             print(employee_or_customer_choice())

@@ -5,13 +5,15 @@ def open_inventory():
     Opens the inventory and splits it.
     
     """
-    new_inventory1 = []
+    new_inventory1 = {}
     with open ('inventory.txt', 'r') as file_2:
         file_2.readline()
         inventory = file_2.readlines()
     for element in inventory:
         item, how_many, price = element.split(', ')
-        new_inventory1.append([item.strip(), int(how_many.strip()), float(price.strip())])
+        new_inventory1[item] = {'Name': item, 'How Many': how_many, 'Price': price}
+        
+        # .append([item.strip(), int(how_many.strip()), float(price.strip())])
     return new_inventory1
 def append_history(item, price, how_many, id_letters):
     '''str, float, float -> str

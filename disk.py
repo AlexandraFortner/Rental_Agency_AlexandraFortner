@@ -5,14 +5,15 @@ def open_inventory():
     Opens the inventory and splits it.
     
     """
+    count = 0
     new_inventory1 = {}
     with open ('inventory.txt', 'r') as file_2:
         file_2.readline()
         inventory = file_2.readlines()
     for element in inventory:
+        count += 1
         item, how_many, price = element.split(', ')
-        new_inventory1[item] = {'Name': item, 'How Many': how_many, 'Price': price}
-        
+        new_inventory1[count] = {'Name': item, 'How Many': how_many, 'Price': price}
         # .append([item.strip(), int(how_many.strip()), float(price.strip())])
     return new_inventory1
 def append_history(item, price, how_many, id_letters):
@@ -34,17 +35,19 @@ def resupply(inventory):
     with open ('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
         file_2.write(new_inventory)
+
 def open_log(file):
     """() -> [[string](item name), int(quanity)]]
     Opens history.txt with every purchase. Shortcut.
     """
-    new_inventory = []
+    new_inventory = {}
     with open(file, 'r') as file_3:
         file_3.readline()
         inventory = file_3.readlines()
     for element in inventory:
         item, price, how_many, id_letters = element.split(', ')
-        new_inventory.append([(item.strip()), float(price.strip()), how_many.strip(), id_letters.strip()])
+        new_inventory
+        # .append([(item.strip()), float(price.strip()), how_many.strip(), id_letters.strip()])
     return new_inventory
 
 def update_inventory(item, how_many1, inventory):

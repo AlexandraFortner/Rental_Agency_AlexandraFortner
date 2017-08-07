@@ -89,8 +89,6 @@ def convert_back(inventory):
     for item in inventory:
         new_inventory += '\n{}, {}, {:.2f}'.format(item[0], int(item[1]), float(item[2]))
     return new_inventory
-
-
 def revenue1(file):
     """
     Gives the added revenue of all the money of each purchase in the log (history.txt).

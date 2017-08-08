@@ -42,8 +42,8 @@ def resupply(inventory):
 
     """
     for item in inventory:
-        if item[1] <= 10:
-            item[1] = 100
+        if int(inventory[item]['How Many']) <= 10:
+            inventory[item]['How Many'] = 100
     with open('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
         file_2.write(new_inventory)
@@ -106,6 +106,6 @@ def returning_update_history(log):
     When customer is returning audio file with
     their specific inputted code, update the history.
     """
-    log = core.convert_into_string(log)
+
     with open('history.txt', 'w') as file:
         file.write(log)

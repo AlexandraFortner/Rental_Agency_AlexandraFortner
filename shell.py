@@ -190,7 +190,7 @@ def pay_deposit_and_rent(s, a, x):
             )
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item1, x, id2)
+            disk.append_history(item1, price, x, id2)
             disk.update_inventory(item1, x, listey, s)
             disk.resupply(listey)
             break

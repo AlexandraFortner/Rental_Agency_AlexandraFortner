@@ -1,5 +1,6 @@
 #DO NOT IMPORT ANY FILE
 
+
 def CountySalesTax(price):
     """(float) -> float
 
@@ -18,6 +19,7 @@ def CountySalesTax(price):
         return 0.0
     county_tax = 0.06
     return float(price) * county_tax
+
 
 def StateSalesTax(price):
     """(float) -> float
@@ -38,7 +40,8 @@ def StateSalesTax(price):
 
     state_tax = 0.07
     return float(price) * state_tax
-    
+
+
 def deposit(price):
     """(float) -> float
 
@@ -58,6 +61,7 @@ def deposit(price):
     else:
         price1 = price / 10
         return str(price1)
+
 
 def rent_price(pricey, deposit):
     """(float, float) -> float
@@ -79,16 +83,24 @@ def rent_price(pricey, deposit):
     total = float(deposit) + 1.00
     return str(total)
 
+
 def convert_back(inventory):
     """[[string(item name), int(quantity)]] -> str
     
     Formats the inventory.
     
     """
+    count = 0
     new_inventory = ''
     for item in inventory:
-        new_inventory += '\n{}, {}, {:.2f}'.format(item[0], int(item[1]), float(item[2]))
+        count += 1
+        new_inventory += '\n{}, {}, {:.2f}'.format(
+            inventory[count]['Name'],
+            int(inventory[count]['How Many']),
+            float(inventory[count]['Price']))
     return new_inventory
+
+
 def revenue1(file):
     """
     Gives the added revenue of all the money of each purchase in the log (history.txt).
@@ -98,12 +110,13 @@ def revenue1(file):
         revenue += item[1]
     return revenue
 
+
 def math_for_receipt(price, due_date):
     """
     Calculates the math needed for the receipt.
     """
     revenue = 0
-    inventory = 0 
+    inventory = 0
     rental_price = 1.0
     total = float(price) + StateSalesTax(price) + CountySalesTax(price)
     due_date = float(due_date)
@@ -111,11 +124,13 @@ def math_for_receipt(price, due_date):
     totally1 = totally + total
     return totally1
 
+
 def convert_into_string(listey):
     """
     Converts list into a string.
     """
     new_string = ''
     for item in listey:
-        new_string += '\n' + str(item[0]) + ', ' + str(item[1]) + ', ' + str(item[2]) + ', ' + str(item[3])
+        new_string += '\n' + str(item[0]) + ', ' + str(item[1]) + ', ' + str(
+            item[2]) + ', ' + str(item[3])
     return new_string

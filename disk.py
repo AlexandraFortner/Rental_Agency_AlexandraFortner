@@ -1,4 +1,6 @@
 import core
+
+
 def open_inventory():
     """() -> [[string(item name), int(quantity)]]
     
@@ -7,22 +9,32 @@ def open_inventory():
     """
     count = 0
     new_inventory1 = {}
-    with open ('inventory.txt', 'r') as file_2:
+    with open('inventory.txt', 'r') as file_2:
         file_2.readline()
         inventory = file_2.readlines()
     for element in inventory:
         count += 1
         item, how_many, price = element.split(', ')
-        new_inventory1[count] = {'Name': item, 'How Many': how_many, 'Price': price}
+        new_inventory1[count] = {
+            'Number': count,
+            'Name': item,
+            'How Many': how_many,
+            'Price': price
+        }
         # .append([item.strip(), int(how_many.strip()), float(price.strip())])
     return new_inventory1
+
+
 def append_history(item, price, how_many, id_letters):
     '''str, float, float -> str
     
     Adds to the log(history.txt) with every purchase.
     '''
     with open('history.txt', 'a') as file_1:
-        file_1.write('\n' + item + " , " + str(price)+ " , " + str(how_many) + ", " + str(id_letters))
+        file_1.write('\n' + item + " , " + str(price) + " , " + str(how_many) +
+                     ", " + str(id_letters))
+
+
 def resupply(inventory):
     """() -> None
 
@@ -32,9 +44,10 @@ def resupply(inventory):
     for item in inventory:
         if item[1] <= 10:
             item[1] = 100
-    with open ('inventory.txt', 'w') as file_2:
+    with open('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
         file_2.write(new_inventory)
+
 
 def open_log(file):
     """() -> [[string](item name), int(quanity)]]
@@ -46,9 +59,15 @@ def open_log(file):
         inventory = file_3.readlines()
     for element in inventory:
         item, price, how_many, id_letters = element.split(', ')
-        new_inventory
+        new_inventory[id_letters] = {
+            'Name': item,
+            'Price': price,
+            'How Many': how_many,
+            'Id Letters': id_letters
+        }
         # .append([(item.strip()), float(price.strip()), how_many.strip(), id_letters.strip()])
     return new_inventory
+
 
 def update_inventory(item, how_many1, inventory):
     """
@@ -64,10 +83,11 @@ def update_inventory(item, how_many1, inventory):
     elif item == 'Bane\'s "Breaking The Bat: It\'s A Snap!"':
         inventory[3][1] -= how_many
     elif item == 'Hugo Strange\'s "The Dark History Of The Medical Practice"':
-        inventory[4][1] -= how_many        
-    with open ('inventory.txt', 'w') as file_2:
+        inventory[4][1] -= how_many
+    with open('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
         file_2.write(new_inventory)
+
 
 def update_inventory_returning(item, how_many, inventory):
     """
@@ -83,10 +103,11 @@ def update_inventory_returning(item, how_many, inventory):
     elif item == 'Bane\'s "Breaking The Bat: It\'s A Snap!"':
         inventory[3][1] += how_many
     elif item == 'Hugo Strange\'s "The Dark History Of The Medical Practice"':
-        inventory[4][1] += how_many   
-    with open ('inventory.txt', 'w') as file_2:
+        inventory[4][1] += how_many
+    with open('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
         file_2.write(new_inventory)
+
 
 def returning_update_history(log):
     """

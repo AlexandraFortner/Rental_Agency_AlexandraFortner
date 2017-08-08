@@ -19,7 +19,6 @@ def insert_line(string, index):
 
 
 def pretty_border(string):
-
     if len(string) <= 167:
         return '\n|' + '~' * len(
             string) + '|\n|' + string + '|\n|' + '~' * len(string) + '|\n'
@@ -44,7 +43,7 @@ def make_pretty(inventory):
     stringy = ''
     for i in range(1, len(inventory) + 1):
         stringy += "\n {}. {:<60}{:>40}".format(
-            inventory[i], inventory[i]['Name'],
+            inventory[i]['Number'], inventory[i]['Name'],
             "Stocked Inventory: " + inventory[i]['How Many'])
     return stringy + '\n'
 

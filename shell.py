@@ -251,16 +251,16 @@ def returning_comics():
         to_delete = []
         if returning == 'q':
             quit()
-        for item in log:
-            print(log.keys())
-            if returning in log.keys(
-            ):  #it's counting the third letter of the id instead of the history.txt
-                to_delete.append(returning)
-                thingy = item
+        print(log.keys())
+
+        if returning in log.keys(
+        ):  #it's counting the third letter of the id instead of the history.txt
+            to_delete.append(returning)
+        print(to_delete)
         for thing in to_delete:
-            log.remove(item)
-        print(
-            '\nAmount of Deposit Returned: {}'.format(log[returning]['Price']))
+            del log[thing]
+        print('\nAmount of Deposit Returned: {}'.format(
+            log[returning.strip()]['Price']))
         #BEFORE: print('\nAmount of Deposit Returned: {}'.format(item[1]))
         disk.returning_update_history(log)
         disk.update_inventory_returning(returning, thingy[2], inventory, s)

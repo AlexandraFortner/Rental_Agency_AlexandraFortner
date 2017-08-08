@@ -7,4 +7,5 @@ Dr. Crane's "A Study In Fear" , 5.0 , 2, okEmo
 Jervis Tetch's "Wonderful Wonderland Fairy Tales!" , 3.0 , 1, FiidY
 Jervis Tetch's "Wonderful Wonderland Fairy Tales!" , 3.0 , 2, FFdYo
 Dr. Crane's "A Study In Fear" , 5.0 , 2, YYeYa
-Jervis Tetch's "Wonderful Wonderland Fairy Tales!" , 3.0 , 90, mAYkF
+Jervis Tetch's "Wonderful Wonderland Fairy Tales!" , 3.0 , 90, mAYkF, rent
+Jervis Tetch's "Wonderful Wonderland Fairy Tales!" , -.5 , 90, mAYkF, return

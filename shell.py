@@ -177,7 +177,7 @@ def pay_deposit_and_rent(s, a, x):
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
             disk.append_history(item1, price, x, id2)
-            disk.update_inventory(item1, x, listey)
+            disk.update_inventory(item1, x, listey, s)
             disk.resupply(listey)
             break
         elif s == '2':
@@ -191,7 +191,7 @@ def pay_deposit_and_rent(s, a, x):
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
             disk.append_history(item1, x, id2)
-            disk.update_inventory(item1, x, listey)
+            disk.update_inventory(item1, x, listey, s)
             disk.resupply(listey)
             break
         elif s == '3':
@@ -205,7 +205,7 @@ def pay_deposit_and_rent(s, a, x):
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
             disk.append_history(item1, price, x, id2)
-            disk.update_inventory(item1, x, listey)
+            disk.update_inventory(item1, x, listey, s)
             disk.resupply(listey)
             break
         elif s == '4':
@@ -219,7 +219,7 @@ def pay_deposit_and_rent(s, a, x):
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
             disk.append_history(item1, price, x, id2)
-            disk.update_inventory(item1, x, listey)
+            disk.update_inventory(item1, x, listey, s)
             disk.resupply(listey)
             break
         elif s == '5':
@@ -234,7 +234,7 @@ def pay_deposit_and_rent(s, a, x):
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
             disk.append_history(item1, price, x, id2)
-            disk.update_inventory(item1, x, listey)
+            disk.update_inventory(item1, x, listey, s)
             disk.resupply(listey)
             break
         else:
@@ -263,7 +263,7 @@ def returning_comics():
             '\nAmount of Deposit Returned: {}'.format(log[returning]['Price']))
         #BEFORE: print('\nAmount of Deposit Returned: {}'.format(item[1]))
         disk.returning_update_history(log)
-        disk.update_inventory_returning(returning, thingy[2], inventory)
+        disk.update_inventory_returning(returning, thingy[2], inventory, s)
         return None
         print(
             '\nSorry! That is not a valid code for our past transactions! Try again!\n'

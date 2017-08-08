@@ -81,21 +81,13 @@ def update_inventory(item, how_many1, inventory, s):
         file_2.write(new_inventory)
 
 
-def update_inventory_returning(item, how_many, inventory):
+def update_inventory_returning(item, how_many, inventory, s):
     """
     Updates the inventory to add from returning it.
     """
-    how_many1 = int(how_many)
-    if item == 'Dr. Crane\'s "A Study In Fear"':
-        inventory[0][1] += how_many
-    elif item == 'Jervis Tetch\'s "Wonderful Wonderland Fairy Tales!"':
-        inventory[1][1] += how_many
-    elif item == 'Edward Nygma\'s "Riddles To Blow The Mind...Literally!"':
-        inventory[2][1] += how_many
-    elif item == 'Bane\'s "Breaking The Bat: It\'s A Snap!"':
-        inventory[3][1] += how_many
-    elif item == 'Hugo Strange\'s "The Dark History Of The Medical Practice"':
-        inventory[4][1] += how_many
+    how_many = int(how_many1)
+    inventory[int(s)][
+        'How Many'] = int(inventory[int(s)]['How Many']) + how_many
     with open('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
         file_2.write(new_inventory)

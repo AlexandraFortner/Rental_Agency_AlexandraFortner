@@ -251,8 +251,8 @@ def returning_comics():
         to_delete = []
         if returning == 'q':
             quit()
-        print(log)
         for item in log:
+            print(log.keys())
             if returning in log.keys(
             ):  #it's counting the third letter of the id instead of the history.txt
                 to_delete.append(returning)

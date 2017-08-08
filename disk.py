@@ -59,11 +59,11 @@ def open_log(file):
         inventory = file_3.readlines()
     for element in inventory:
         item, price, how_many, id_letters = element.split(', ')
-        new_inventory[id_letters] = {
+        new_inventory[id_letters.strip()] = {
             'Name': item,
             'Price': price,
             'How Many': how_many,
-            'Id Letters': id_letters
+            'Id Letters': id_letters.strip()
         }
         # .append([(item.strip()), float(price.strip()), how_many.strip(), id_letters.strip()])
     return new_inventory

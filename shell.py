@@ -297,21 +297,15 @@ def returning_comics(y, c):
         inventory = disk.open_inventory()
         returning = slow_type(
             '\nPlease input your Id on your previous receipt.\n\n-')
-        # to_delete = []
         if returning == 'q':
             quit()
         if returning in log.keys():
             log[returning]['Current State'] = 'returned'
-            # to_delete.append(returning)
             print('\nAmount of Deposit Returned: {}'.format(
                 log[returning]['Price']))
             disk.update_inventory_returning(returning, c, inventory, y)
-            # for thing in to_delete:
-            #     del log[thing]
             str_log = core.convert_into_string(log)
             disk.returning_update_history(str_log)
-        # disk.update_inventory_returning(returning, log[returning]['How Many'],
-        #                                 inventory, s)
         return None
         print(
             '\nSorry! That is not a valid code for our past transactions! Try again!\n'
@@ -319,7 +313,6 @@ def returning_comics(y, c):
 
 
 def employee_or_customer_choice():
-    # log = disk.open_log('history.txt')
     print((pretty_border('Welcome to The Arkham Asylum!')))
     while True:
         employee_or_customer = slow_type(
@@ -337,6 +330,7 @@ def employee_or_customer_choice():
 def continuing_employee():
     while True:
         log = disk.open_log('history.txt')
+        print(log)
         print('\nWhat would you like to do?\n\n')
         choosey = slow_type(
             '1. See inventory.\n2. See revenue.\n3. See past transactions.\n4. Exit to beginning.\n5. Exit the program.\n\n-'
@@ -352,7 +346,8 @@ def continuing_employee():
             print('\n')
             print(rev)
         elif choosey == '3':
-            print(disk.open_log('history.txt'))
+            log = disk.open_log('history.txt')
+            print(core.convert_into_string(log))
         elif choosey == '4':
             print(employee_or_customer_choice())
         elif choosey == '5':
@@ -363,7 +358,6 @@ def continuing_employee():
 
 def continuing_customer():
     while True:
-        # log = disk.open_log('history.txt')
         print('\nWhat would you like to do?\n\n')
         choose = slow_type(
             '1. Return an comic book.\n2. Rent an comic book.\n3. Exit to beginning.\n4. Exit the program.\n\n-'

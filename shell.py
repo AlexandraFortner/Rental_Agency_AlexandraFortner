@@ -330,7 +330,6 @@ def employee_or_customer_choice():
 def continuing_employee():
     while True:
         log = disk.open_log('history.txt')
-        print(log)
         print('\nWhat would you like to do?\n\n')
         choosey = slow_type(
             '1. See inventory.\n2. See revenue.\n3. See past transactions.\n4. Exit to beginning.\n5. Exit the program.\n\n-'

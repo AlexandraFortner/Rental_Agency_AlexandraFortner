@@ -31,7 +31,7 @@ def append_history(item, price, how_many, id_letters, current_state):
     Adds to the log(history.txt) with every purchase.
     '''
     with open('history.txt', 'a') as file_1:
-        file_1.write('\n' + item + " , " + str(price) + " , " + str(how_many) +
+        file_1.write('\n' + item + ", " + str(price) + ", " + str(how_many) +
                      ", " + str(id_letters) + ", " + str(current_state))
 
 
@@ -60,7 +60,7 @@ def open_log(file):
     for element in inventory:
         item, price, how_many, id_letters, current_state = element.split(', ')
         new_inventory[id_letters.strip()] = {
-            'Name': item,
+            'Name': item.strip(),
             'Price': price,
             'How Many': how_many,
             'Id Letters': id_letters.strip(),

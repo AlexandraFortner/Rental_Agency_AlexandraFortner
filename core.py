@@ -136,6 +136,7 @@ def convert_into_string(log):
     new_string = ''
     for item in sorted(log):
         new_string += '\n' + str(log[item]['Name']) + ', ' + str(
-            log[item]['Price']) + ', ' + str(
-                log[item]['How Many']) + ', ' + str(log[item]['Id Letters'])
+            log[item]['Price']
+        ) + ', ' + str(log[item]['How Many']) + ', ' + str(
+            log[item]['Id Letters'] + ', ' + str(log[item]['Current State']))
     return new_string

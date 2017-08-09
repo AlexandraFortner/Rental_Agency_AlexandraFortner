@@ -25,14 +25,14 @@ def open_inventory():
     return new_inventory1
 
 
-def append_history(item, price, how_many, id_letters):
+def append_history(item, price, how_many, id_letters, current_state):
     '''str, float, float -> str
     
     Adds to the log(history.txt) with every purchase.
     '''
     with open('history.txt', 'a') as file_1:
         file_1.write('\n' + item + " , " + str(price) + " , " + str(how_many) +
-                     ", " + str(id_letters))
+                     ", " + str(id_letters) + ", " + str(current_state))
 
 
 def resupply(inventory):
@@ -58,12 +58,13 @@ def open_log(file):
         file_3.readline()
         inventory = file_3.readlines()
     for element in inventory:
-        item, price, how_many, id_letters = element.split(', ')
+        item, price, how_many, id_letters, current_state = element.split(', ')
         new_inventory[id_letters.strip()] = {
             'Name': item,
             'Price': price,
             'How Many': how_many,
-            'Id Letters': id_letters.strip()
+            'Id Letters': id_letters.strip(),
+            'Current State': current_state
         }
         # .append([(item.strip()), float(price.strip()), how_many.strip(), id_letters.strip()])
     return new_inventory

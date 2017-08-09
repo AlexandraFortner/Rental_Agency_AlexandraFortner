@@ -212,6 +212,7 @@ def pay_deposit_and_rent(s, a, x):
         log = disk.open_log('history.txt')
         listey = disk.open_inventory()
         item = str(listey[int(s)]['Name'])
+        current_state = 'rented'
         if s == 'Q':
             quit()
         elif s == '1':
@@ -224,7 +225,7 @@ def pay_deposit_and_rent(s, a, x):
             )
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item1, price, x, id2)
+            disk.append_history(item1, price, x, id2, current_state)
             disk.update_inventory(item1, x, listey, s)
             disk.resupply(listey)
             break
@@ -238,7 +239,7 @@ def pay_deposit_and_rent(s, a, x):
             )
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item1, price, x, id2)
+            disk.append_history(item1, price, x, id2, current_state)
             disk.update_inventory(item1, x, listey, s)
             disk.resupply(listey)
             break
@@ -252,7 +253,7 @@ def pay_deposit_and_rent(s, a, x):
             )
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item1, price, x, id2)
+            disk.append_history(item1, price, x, id2, current_state)
             disk.update_inventory(item1, x, listey, s)
             disk.resupply(listey)
             break
@@ -266,7 +267,7 @@ def pay_deposit_and_rent(s, a, x):
             )
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item1, price, x, id2)
+            disk.append_history(item1, price, x, id2, current_state)
             disk.update_inventory(item1, x, listey, s)
             disk.resupply(listey)
             break
@@ -281,7 +282,7 @@ def pay_deposit_and_rent(s, a, x):
             )
             id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item1, price, x, id2)
+            disk.append_history(item1, price, x, id2, current_state)
             disk.update_inventory(item1, x, listey, s)
             disk.resupply(listey)
             break
@@ -296,20 +297,19 @@ def returning_comics(y, c):
         inventory = disk.open_inventory()
         returning = slow_type(
             '\nPlease input your Id on your previous receipt.\n\n-')
-        to_delete = []
+        # to_delete = []
         if returning == 'q':
             quit()
         if returning in log.keys():
-            to_delete.append(returning)
-        print(
-            '\nAmount of Deposit Returned: {}'.format(log[returning]['Price']))
-        how_many = log[returning]['How Many']
-        disk.update_inventory_returning(returning, c, inventory, y)
-        for thing in to_delete:
-            del log[thing]
-        #BEFORE: print('\nAmount of Deposit Returned: {}'.format(item[1]))
-        str_log = core.convert_into_string(log)
-        disk.returning_update_history(str_log)
+            log[returning]['Current State'] = 'returned'
+            # to_delete.append(returning)
+            print('\nAmount of Deposit Returned: {}'.format(
+                log[returning]['Price']))
+            disk.update_inventory_returning(returning, c, inventory, y)
+            # for thing in to_delete:
+            #     del log[thing]
+            str_log = core.convert_into_string(log)
+            disk.returning_update_history(str_log)
         # disk.update_inventory_returning(returning, log[returning]['How Many'],
         #                                 inventory, s)
         return None

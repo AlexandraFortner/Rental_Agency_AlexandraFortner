@@ -4,3 +4,5 @@ Jervis Tetch's "Wonderful Wonderland Fairy Tales!", 99, 20.00
 Edward Nygma's "Riddles To Blow The Mind...Literally!", 100, 30.50
 Bane's "Breaking The Bat: It's A Snap!", 99, 36.00
 Hugo Strange's "The Dark History Of The Medical Practice", 100, 12.00
+Two-Face's "A Sigh Of Duality: Coping with Your Scars", 100, 26.00
+Mr. Freeze's "Loving Unconditionally", 100, 30.00

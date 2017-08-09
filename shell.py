@@ -101,26 +101,31 @@ def choose_the_comic_book():
         first = slow_type(
             '\n-What comic book would you like to rent today?\n\n-').title()
         item = str(listey[int(first)]['Name'])
-
+        numbers = ['1', '2', '3', '4', '5', '6', '7']
         if first == 'Q':
             quit()
-        elif first == '1':
-            print('\n•You\'ve chosen ' + item.strip('1. ') + '•')
+        elif first not in numbers:
+            print('\n\nInvalid choice. Try again.\n-')
+        elif first in numbers:
+            print('\n•You\'ve chosen ' + item + '•')
             break
-        elif first == '2':
-            print('\n•You have chosen ' + item.strip('2. ') + '•')
-            break
-        elif first == '3':
-            print('\n•You have chosen ' + item.strip('3. ') + '•')
-            break
-        elif first == '4':
-            print('\n•You have chosen ' + item.strip('4. ') + '•')
-            break
-        elif first == '5':
-            print('\n•You have chosen ' + item.strip('5. ') + '•')
-            break
-        else:
-            print('\nInvalid Audio Tape number. Please try again.')
+        #     print('\n•You\'ve chosen ' + item.strip('1. ') + '•')
+        #     break
+        # elif first == '2':
+        #     print('\n•You have chosen ' + item.strip('2. ') + '•')
+        #     break
+        # elif first == '3':
+        #     print('\n•You have chosen ' + item.strip('3. ') + '•')
+        #     break
+        # elif first == '4':
+        #     print('\n•You have chosen ' + item.strip('4. ') + '•')
+        #     break
+        # elif first == '5':
+        #     print('\n•You have chosen ' + item.strip('5. ') + '•')
+        #     break
+        # elif first == '5':
+        #     print('\n•You have chosen ' + item.strip('5. ') + '•')
+        #     break
 
     return first  #now s = first(the choice of Audio Tape from user's input)
 
@@ -213,66 +218,58 @@ def pay_deposit_and_rent(s, a, x):
         listey = disk.open_inventory()
         item = str(listey[int(s)]['Name'])
         current_state = 'rented'
+        id2 = id_letters_random(log)
         if s == 'Q':
             quit()
         elif s == '1':
-            item1 = item.strip('1. ')
             deposit = core.deposit(40.00)
             price = core.rent_price(40.00, deposit)
             print(
                 '\nYou must pay a ' + deposit +
                 ' deposit. It will be refunded after you return the Audio Tape.'
             )
-            id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item1, price, x, id2, current_state)
-            disk.update_inventory(item1, x, listey, s)
+            disk.append_history(item, price, x, id2, current_state)
+            disk.update_inventory(item, x, listey, s)
             disk.resupply(listey)
             break
         elif s == '2':
-            item1 = item.strip('2. ')
             deposit = core.deposit(20.00)
             price = core.rent_price(20.00, deposit)
             print(
                 '\nYou must pay a ' + deposit +
                 ' deposit. It will be refunded after you return the Audio Tape.'
             )
-            id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item1, price, x, id2, current_state)
-            disk.update_inventory(item1, x, listey, s)
+            disk.append_history(item, price, x, id2, current_state)
+            disk.update_inventory(item, x, listey, s)
             disk.resupply(listey)
             break
         elif s == '3':
-            item1 = item.strip('3. ')
             deposit = core.deposit(30.50)
             price = core.rent_price(30.50, deposit)
             print(
                 '\nYou must pay a ' + deposit +
                 ' deposit. It will be refunded after you return the Audio Tape.'
             )
-            id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item1, price, x, id2, current_state)
-            disk.update_inventory(item1, x, listey, s)
+            disk.append_history(item, price, x, id2, current_state)
+            disk.update_inventory(item, x, listey, s)
             disk.resupply(listey)
             break
         elif s == '4':
-            item1 = item.strip('4. ')
             deposit = core.deposit(36.00)
             price = core.rent_price(36.00, deposit)
             print(
                 '\nYou must pay a ' + deposit +
                 ' deposit. It will be refunded after you return the Audio Tape.'
             )
-            id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item1, price, x, id2, current_state)
-            disk.update_inventory(item1, x, listey, s)
+            disk.append_history(item, price, x, id2, current_state)
+            disk.update_inventory(item, x, listey, s)
             disk.resupply(listey)
             break
         elif s == '5':
-            item1 = item.strip('5. ')
             deposit = core.deposit(12.00)
             price = core.rent_price(12.00, deposit)
             rental = 1.0
@@ -280,10 +277,9 @@ def pay_deposit_and_rent(s, a, x):
                 '\nYou must pay a ' + deposit +
                 ' deposit. It will be refunded after you return the Audio Tape.'
             )
-            id2 = id_letters_random(log)
             print(receipt(price, a, id2))
-            disk.append_history(item1, price, x, id2, current_state)
-            disk.update_inventory(item1, x, listey, s)
+            disk.append_history(item, price, x, id2, current_state)
+            disk.update_inventory(item, x, listey, s)
             disk.resupply(listey)
             break
         else:

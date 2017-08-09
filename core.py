@@ -102,11 +102,9 @@ def convert_back(inventory):
 
 
 def revenue1(file):
-    """
+    """() -> float
     Gives the added revenue of all the money of each purchase in the log (history.txt).
-    # """
-    # inventory = disk.open_inventory(
-    # )  #Cannot import disk.py, so there is a NameError: name 'disk' is not defined
+    """
     count = 0
     revenue = 0.0
     for item in file:

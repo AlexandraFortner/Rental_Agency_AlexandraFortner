@@ -1,8 +1,5 @@
 
-Dr. Crane's "A Study In Fear" , 5.0 , 2, AhxGo, returned
-Dr. Crane's "A Study In Fear" , 5.0 , 1, XkEXa, returned
-Dr. Crane's "A Study In Fear", 5.0, 2, FETFE, rented
-Dr. Crane's "A Study In Fear", 5.0, 2, FETFE, returned
-Jervis Tetch's "Wonderful Wonderland Fairy Tales!", 3.0, 1, YeYax, rented
-Jervis Tetch's "Wonderful Wonderland Fairy Tales!", 3.0, 2, YeYax, returned
-Edward Nygma's "Riddles To Blow The Mind...Literally!", 4.05, 1, oeuea, rented
+Dr. Crane's "A Study In Fear", 5.0, 1, eThwF, rented
+Dr. Crane's "A Study In Fear", -5.0, 1, eThwF, returned
+Bane's "Breaking The Bat: It's A Snap!", 4.6, 2, hAAYw, rented
+Bane's "Breaking The Bat: It's A Snap!", -4.6, 1, hAAYw, returned

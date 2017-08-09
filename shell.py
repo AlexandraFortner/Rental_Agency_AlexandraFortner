@@ -306,10 +306,9 @@ def returning_comics(y, c):
                 log[returning]['Price']))
             disk.update_inventory_returning(returning, c, inventory, y)
             str_log = core.convert_into_string(log)
-            disk.append_history(log[returning]['Name'],
-                                log[returning]['Price'], c,
-                                log[returning]['Id Letters'], current_state)
-            # disk.returning_update_history(str_log)
+            disk.append_history_returning(
+                log[returning]['Name'], log[returning]['Price'], c,
+                log[returning]['Id Letters'], current_state)
         return None
         print(
             '\nSorry! That is not a valid code for our past transactions! Try again!\n'
@@ -349,6 +348,7 @@ def continuing_employee():
             print('\n')
             print(rev)
         elif choosey == '3':
+            print('\n')
             log = disk.open_log('history.txt')
             print(core.convert_into_string(log))
         elif choosey == '4':

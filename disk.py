@@ -26,20 +26,26 @@ def open_inventory():
 
 
 def append_history(item, price, how_many, id_letters, current_state):
-    '''str, float, float -> str
-    
+    """str, float, float -> str
     Adds to the log(history.txt) with every purchase.
-    '''
+    """
     with open('history.txt', 'a') as file_1:
         file_1.write('\n' + item + ", " + str(price) + ", " + str(how_many) +
                      ", " + str(id_letters) + ", " + str(current_state))
 
 
+def append_history_returning(item, price, how_many, id_letters, current_state):
+    """str, float, float -> str
+    Adds to the log(history.txt) with every purchase.
+    """
+    with open('history.txt', 'a') as file_1:
+        file_1.write('\n' + item + ", -" + str(price) + ", " + str(how_many) +
+                     ", " + str(id_letters) + ", " + str(current_state))
+
+
 def resupply(inventory):
     """() -> None
-
     If any item stock is lower than or at 100, restocks to 1000.
-
     """
     for item in inventory:
         if int(inventory[item]['How Many']) <= 10:

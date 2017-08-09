@@ -56,7 +56,7 @@ def id_letters_random(log):
     Generates a random string of certain specified letters. For Id purposes.
     """
     id1 = ''
-    choicey1 = 'F', 'u', 'A', 'Y', 'E', 'd', 'k', 'a', 'i', 'm', 'e', 'o', 'w'
+    choicey1 = 'F', 'u', 'A', 'Y', 'E', 'd', 'k', 'a', 'i', 'm', 'e', 'o', 'w', 'x', 'X', 'b', 'A', 'T', 'G', 'h'
     for i in range(5):
         id1 += random.choice(choicey1)
     return id1
@@ -125,6 +125,37 @@ def choose_the_comic_book():
     return first  #now s = first(the choice of Audio Tape from user's input)
 
 
+def choose_the_comic_book_return():
+    while True:
+        print('To exit this application, click "q". Type Below, Please:\n')
+        listey = disk.open_inventory()
+        first = slow_type(
+            '\n-What comic book would you like to return today?\n\n-').title()
+        item = str(listey[int(first)]['Name'])
+
+        if first == 'Q':
+            quit()
+        elif first == '1':
+            print('\n•You\'ve chosen ' + item.strip('1. ') + '•')
+            break
+        elif first == '2':
+            print('\n•You have chosen ' + item.strip('2. ') + '•')
+            break
+        elif first == '3':
+            print('\n•You have chosen ' + item.strip('3. ') + '•')
+            break
+        elif first == '4':
+            print('\n•You have chosen ' + item.strip('4. ') + '•')
+            break
+        elif first == '5':
+            print('\n•You have chosen ' + item.strip('5. ') + '•')
+            break
+        else:
+            print('\nInvalid Audio Tape number. Please try again.')
+
+    return first
+
+
 def due():
     while True:
         valid_number_list = ['1', '2', '3', '4', '5', '6', '7']
@@ -146,6 +177,23 @@ def how_many_comics():
     while True:
         how_many1 = int(
             slow_type('\nHow many would you like to rent?\n\n-').title())
+        if how_many1 == 'Q':
+            exit()
+        elif how_many1 > 100:
+            print(
+                '\nSorry, we have a limit of 100 comic book copies. Please input a lower number.\n\n-'
+            )
+        elif how_many1 <= 100:
+            return how_many1  #goes to pay_deposit_and_rent, then moves to update_inventory in disk.py
+            break
+        else:
+            print('\nInvalid input. Try again.\n\n-')
+
+
+def how_many_comics_returning():
+    while True:
+        how_many1 = int(
+            slow_type('\nHow many would you like to return?\n\n-').title())
         if how_many1 == 'Q':
             exit()
         elif how_many1 > 100:
@@ -242,7 +290,7 @@ def pay_deposit_and_rent(s, a, x):
     return price
 
 
-def returning_comics():
+def returning_comics(y, c):
     while True:
         log = disk.open_log('history.txt')
         inventory = disk.open_inventory()
@@ -251,19 +299,19 @@ def returning_comics():
         to_delete = []
         if returning == 'q':
             quit()
-        print(log.keys())
-
-        if returning in log.keys(
-        ):  #it's counting the third letter of the id instead of the history.txt
+        if returning in log.keys():
             to_delete.append(returning)
-        print(to_delete)
+        print(
+            '\nAmount of Deposit Returned: {}'.format(log[returning]['Price']))
+        how_many = log[returning]['How Many']
+        disk.update_inventory_returning(returning, c, inventory, y)
         for thing in to_delete:
             del log[thing]
-        print('\nAmount of Deposit Returned: {}'.format(
-            log[returning.strip()]['Price']))
         #BEFORE: print('\nAmount of Deposit Returned: {}'.format(item[1]))
-        disk.returning_update_history(log)
-        disk.update_inventory_returning(returning, thingy[2], inventory, s)
+        str_log = core.convert_into_string(log)
+        disk.returning_update_history(str_log)
+        # disk.update_inventory_returning(returning, log[returning]['How Many'],
+        #                                 inventory, s)
         return None
         print(
             '\nSorry! That is not a valid code for our past transactions! Try again!\n'
@@ -323,7 +371,10 @@ def continuing_customer():
         if choose == 'Q':
             quit()
         elif choose == '1':
-            returning_comics()
+            opening_message()
+            y = choose_the_comic_book_return()
+            c = how_many_comics_returning()
+            returning_comics(y, c)
         elif choose == '2':
             opening_message()
             s = choose_the_comic_book()

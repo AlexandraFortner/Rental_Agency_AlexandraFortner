@@ -129,12 +129,13 @@ def math_for_receipt(price, due_date):
     return totally1
 
 
-def convert_into_string(listey):
+def convert_into_string(log):
     """
-    Converts list into a string.
+    Converts a dictionary into a string.
     """
     new_string = ''
-    for item in listey:
-        new_string += '\n' + str(item[0]) + ', ' + str(item[1]) + ', ' + str(
-            item[2]) + ', ' + str(item[3])
+    for item in sorted(log):
+        new_string += '\n' + str(log[item]['Name']) + ', ' + str(
+            log[item]['Price']) + ', ' + str(
+                log[item]['How Many']) + ', ' + str(log[item]['Id Letters'])
     return new_string

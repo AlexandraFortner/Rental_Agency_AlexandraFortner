@@ -81,13 +81,13 @@ def update_inventory(item, how_many1, inventory, s):
         file_2.write(new_inventory)
 
 
-def update_inventory_returning(item, how_many, inventory, s):
+def update_inventory_returning(item, c, inventory, y):
     """
     Updates the inventory to add from returning it.
     """
-    how_many = int(how_many1)
-    inventory[int(s)][
-        'How Many'] = int(inventory[int(s)]['How Many']) + how_many
+    how_many = int(c)
+    inventory[int(y)][
+        'How Many'] = int(inventory[int(y)]['How Many']) + how_many
     with open('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
         file_2.write(new_inventory)
@@ -100,4 +100,4 @@ def returning_update_history(log):
     """
 
     with open('history.txt', 'w') as file:
-        file.write(log)
+        file.write(str(log))

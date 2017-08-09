@@ -1,11 +1,9 @@
 
-Edward Nygma's "Riddles To Blow The Mind...Literally!", 4.05, 1, oeEae
-Edward Nygma's "Riddles To Blow The Mind...Literally!" , 4.05 , 2, auemA
-Dr. Crane's "A Study In Fear" , 5.0 , 2, admwA
+Edward Nygma's "Riddles To Blow The Mind...Literally!" , 4.05 , 1, AmAAA
 Dr. Crane's "A Study In Fear" , 5.0 , 1, Eiddk
-Dr. Crane's "A Study In Fear" , 5.0 , 2, okEmo
-Jervis Tetch's "Wonderful Wonderland Fairy Tales!" , 3.0 , 1, FiidY
 Jervis Tetch's "Wonderful Wonderland Fairy Tales!" , 3.0 , 2, FFdYo
 Dr. Crane's "A Study In Fear" , 5.0 , 2, YYeYa
-Jervis Tetch's "Wonderful Wonderland Fairy Tales!" , 3.0 , 90, mAYkF, rent
-Jervis Tetch's "Wonderful Wonderland Fairy Tales!" , -.5 , 90, mAYkF, return
+Dr. Crane's "A Study In Fear" , 5.0 , 2, admwA
+Edward Nygma's "Riddles To Blow The Mind...Literally!" , 4.05 , 2, auemA
+Bane's "Breaking The Bat: It's A Snap!" , 4.6 , 1, hEGwb
+Dr. Crane's "A Study In Fear" , 5.0 , 2, okEmo

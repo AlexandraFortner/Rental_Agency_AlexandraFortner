@@ -92,13 +92,3 @@ def update_inventory_returning(item, c, inventory, y):
     with open('inventory.txt', 'w') as file_2:
         new_inventory = core.convert_back(inventory)
         file_2.write(new_inventory)
-
-
-def returning_update_history(log):
-    """
-    When customer is returning audio file with
-    their specific inputted code, update the history.
-    """
-
-    with open('history.txt', 'w') as file:
-        file.write(str(log))

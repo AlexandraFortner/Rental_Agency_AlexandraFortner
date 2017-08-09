@@ -295,6 +295,7 @@ def returning_comics(y, c):
     while True:
         log = disk.open_log('history.txt')
         inventory = disk.open_inventory()
+        current_state = 'returned'
         returning = slow_type(
             '\nPlease input your Id on your previous receipt.\n\n-')
         if returning == 'q':
@@ -305,7 +306,10 @@ def returning_comics(y, c):
                 log[returning]['Price']))
             disk.update_inventory_returning(returning, c, inventory, y)
             str_log = core.convert_into_string(log)
-            disk.returning_update_history(str_log)
+            disk.append_history(log[returning]['Name'],
+                                log[returning]['Price'], c,
+                                log[returning]['Id Letters'], current_state)
+            # disk.returning_update_history(str_log)
         return None
         print(
             '\nSorry! That is not a valid code for our past transactions! Try again!\n'

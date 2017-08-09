@@ -59,4 +59,4 @@ def test_convert_into_string():
         }
     }
     assert core.convert_into_string(
-        inventory) == '\nCrane, 5.0 , 1, XkEXa, returned'
+        inventory) == 'Crane, 5.0 , 1, XkEXa, returned'

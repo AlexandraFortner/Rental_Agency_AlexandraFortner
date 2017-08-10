@@ -163,7 +163,7 @@ def how_many_comics():
                 '\nSorry, we have a limit of 100 comic book copies. Please input a lower number.\n\n-'
             )
         elif how_many1 <= 100:
-            return how_many1  #goes to pay_deposit_and_rent, then moves to update_inventory in disk.py
+            return how_many1
             break
         else:
             print('\nInvalid input. Try again.\n\n-')
@@ -180,7 +180,7 @@ def how_many_comics_returning():
                 '\nSorry, we have a limit of 100 comic book copies. Please input a lower number.\n\n-'
             )
         elif how_many1 <= 100:
-            return how_many1  #goes to pay_deposit_and_rent, then moves to update_inventory in disk.py
+            return how_many1
             break
         else:
             print('\nInvalid input. Try again.\n\n-')
@@ -269,7 +269,7 @@ def continuing_employee():
         log = disk.open_log('history.txt')
         print('\nWhat would you like to do?\n\n')
         choosey = slow_type(
-            '1. See inventory.\n2. See revenue.\n3. See past transactions.\n4. Exit to beginning.\n5. Exit the program.\n\n-'
+            '1. See inventory.\n2. See revenue.\n3. Exit to beginning.\n4. Exit the program.\n\n-'
         ).title()
 
         if choosey == 'Q':
@@ -282,12 +282,8 @@ def continuing_employee():
             print('\n')
             print(rev)
         elif choosey == '3':
-            print('\n')
-            log = disk.open_log('history.txt')
-            print(core.convert_into_string(log))
-        elif choosey == '4':
             print(employee_or_customer_choice())
-        elif choosey == '5':
+        elif choosey == '4':
             exit()
         else:
             print('\nInvalid input. Try again.\n\n')

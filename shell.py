@@ -42,7 +42,7 @@ def pretty_choice(choice):
 def make_pretty(inventory):
     stringy = ''
     for i in range(1, len(inventory) + 1):
-        stringy += "\n {}. {:<60}{:>40}".format(
+        stringy += "\n {}. {:<60}{:>30}".format(
             inventory[i]['Number'], inventory[i]['Name'],
             "Stocked Inventory: " + inventory[i]['How Many'])
     return stringy + '\n'
@@ -56,7 +56,7 @@ def id_letters_random(log):
     Generates a random string of certain specified letters. For Id purposes.
     """
     id1 = ''
-    choicey1 = 'F', 'u', 'A', 'Y', 'E', 'd', 'k', 'a', 'i', 'm', 'e', 'o', 'w', 'x', 'X', 'b', 'A', 'T', 'G', 'h'
+    choicey1 = 'F', 'u', 'A', 'Y', 'E', 'd', 'k', 'a', 'i', 'm', 'e', 'o', 'w', 'x', 'X', 'b', 'L', 'T', 'G', 'h'
     for i in range(5):
         id1 += random.choice(choicey1)
     return id1
@@ -101,7 +101,7 @@ def choose_the_comic_book():
         first = slow_type(
             '\n-What comic book would you like to rent today?\n\n-').title()
         item = str(listey[int(first)]['Name'])
-        numbers = ['1', '2', '3', '4', '5', '6', '7']
+        numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         if first == 'Q':
             quit()
         elif first not in numbers:
@@ -109,25 +109,10 @@ def choose_the_comic_book():
         elif first in numbers:
             print('\n•You\'ve chosen ' + item + '•')
             break
-        #     print('\n•You\'ve chosen ' + item.strip('1. ') + '•')
-        #     break
-        # elif first == '2':
-        #     print('\n•You have chosen ' + item.strip('2. ') + '•')
-        #     break
-        # elif first == '3':
-        #     print('\n•You have chosen ' + item.strip('3. ') + '•')
-        #     break
-        # elif first == '4':
-        #     print('\n•You have chosen ' + item.strip('4. ') + '•')
-        #     break
-        # elif first == '5':
-        #     print('\n•You have chosen ' + item.strip('5. ') + '•')
-        #     break
-        # elif first == '5':
-        #     print('\n•You have chosen ' + item.strip('5. ') + '•')
-        #     break
+        else:
+            print('\nInvalid Input. Try again.\n\n-')
 
-    return first  #now s = first(the choice of Audio Tape from user's input)
+    return first
 
 
 def choose_the_comic_book_return():
@@ -138,32 +123,21 @@ def choose_the_comic_book_return():
             '\n-What comic book would you like to return today?\n\n-').title()
         item = str(listey[int(first)]['Name'])
 
+        numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         if first == 'Q':
             quit()
-        elif first == '1':
-            print('\n•You\'ve chosen ' + item.strip('1. ') + '•')
+        elif first not in numbers:
+            print('\n\nInvalid choice. Try again.\n-')
+        elif first in numbers:
+            print('\n•You\'ve chosen ' + item + '•')
             break
-        elif first == '2':
-            print('\n•You have chosen ' + item.strip('2. ') + '•')
-            break
-        elif first == '3':
-            print('\n•You have chosen ' + item.strip('3. ') + '•')
-            break
-        elif first == '4':
-            print('\n•You have chosen ' + item.strip('4. ') + '•')
-            break
-        elif first == '5':
-            print('\n•You have chosen ' + item.strip('5. ') + '•')
-            break
-        else:
-            print('\nInvalid Audio Tape number. Please try again.')
 
     return first
 
 
 def due():
     while True:
-        valid_number_list = ['1', '2', '3', '4', '5', '6', '7']
+        valid_number_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         due_date = slow_type(
             '\nHow many days would you like to rent?\n\n-').title()
         if due_date == 'Q':
@@ -212,82 +186,44 @@ def how_many_comics_returning():
             print('\nInvalid input. Try again.\n\n-')
 
 
-def pay_deposit_and_rent(s, a, x):
+def pay_deposit_and_rent(choose_a_comic_book1, due_in, how_many_comics1):
     while True:
-        log = disk.open_log('history.txt')
-        listey = disk.open_inventory()
-        item = str(listey[int(s)]['Name'])
-        current_state = 'rented'
-        id2 = id_letters_random(log)
-        if s == 'Q':
+        valid_number_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+        if choose_a_comic_book1 == 'Q':
             quit()
-        elif s == '1':
-            deposit = core.deposit(40.00)
-            price = core.rent_price(40.00, deposit)
-            print(
-                '\nYou must pay a ' + deposit +
-                ' deposit. It will be refunded after you return the Audio Tape.'
-            )
-            print(receipt(price, a, id2))
-            disk.append_history(item, price, x, id2, current_state)
-            disk.update_inventory(item, x, listey, s)
-            disk.resupply(listey)
-            break
-        elif s == '2':
-            deposit = core.deposit(20.00)
-            price = core.rent_price(20.00, deposit)
-            print(
-                '\nYou must pay a ' + deposit +
-                ' deposit. It will be refunded after you return the Audio Tape.'
-            )
-            print(receipt(price, a, id2))
-            disk.append_history(item, price, x, id2, current_state)
-            disk.update_inventory(item, x, listey, s)
-            disk.resupply(listey)
-            break
-        elif s == '3':
-            deposit = core.deposit(30.50)
-            price = core.rent_price(30.50, deposit)
-            print(
-                '\nYou must pay a ' + deposit +
-                ' deposit. It will be refunded after you return the Audio Tape.'
-            )
-            print(receipt(price, a, id2))
-            disk.append_history(item, price, x, id2, current_state)
-            disk.update_inventory(item, x, listey, s)
-            disk.resupply(listey)
-            break
-        elif s == '4':
-            deposit = core.deposit(36.00)
-            price = core.rent_price(36.00, deposit)
-            print(
-                '\nYou must pay a ' + deposit +
-                ' deposit. It will be refunded after you return the Audio Tape.'
-            )
-            print(receipt(price, a, id2))
-            disk.append_history(item, price, x, id2, current_state)
-            disk.update_inventory(item, x, listey, s)
-            disk.resupply(listey)
-            break
-        elif s == '5':
-            deposit = core.deposit(12.00)
-            price = core.rent_price(12.00, deposit)
-            rental = 1.0
-            print(
-                '\nYou must pay a ' + deposit +
-                ' deposit. It will be refunded after you return the Audio Tape.'
-            )
-            print(receipt(price, a, id2))
-            disk.append_history(item, price, x, id2, current_state)
-            disk.update_inventory(item, x, listey, s)
-            disk.resupply(listey)
-            break
+        elif choose_a_comic_book1 not in valid_number_list:
+            print('\nTry again.\n\n-')
         else:
-            input('got: {}'.format(s))
+            log = disk.open_log('history.txt')
+            listey = disk.open_inventory()
+            item = str(listey[int(choose_a_comic_book1)]['Name'])
+            current_state = 'rented'
+            id2 = id_letters_random(log)
+            x = float(listey[int(choose_a_comic_book1)]['Price'])
+            deposit = core.deposit(x)
+            price = core.rent_price(x, deposit)
+            log[id2] = {
+                'Name': item.strip(),
+                'Price': price,
+                'How Many': how_many_comics1,
+                'Id Letters': id2.strip(),
+                'Current State': current_state
+            }
+            print(
+                '\nYou must pay a ' + deposit +
+                ' deposit. It will be refunded after you return the Audio Tape.'
+            )
+            print(receipt(price, due_in, id2))
+            disk.append_history(item, price, how_many_comics1, id2,
+                                current_state)
+            disk.update_inventory(item, how_many_comics1, listey,
+                                  choose_a_comic_book1)
+            disk.resupply(listey)
+            break
     return price
 
 
-def returning_comics(y, c):
+def returning_comics(choose_comic_to_return, choose_a_comic_book):
     while True:
         log = disk.open_log('history.txt')
         inventory = disk.open_inventory()
@@ -300,11 +236,13 @@ def returning_comics(y, c):
             log[returning]['Current State'] = 'returned'
             print('\nAmount of Deposit Returned: {}'.format(
                 log[returning]['Price']))
-            disk.update_inventory_returning(returning, c, inventory, y)
+            disk.update_inventory_returning(returning, choose_a_comic_book,
+                                            inventory, choose_comic_to_return)
             str_log = core.convert_into_string(log)
             disk.append_history_returning(
-                log[returning]['Name'], log[returning]['Price'], c,
-                log[returning]['Id Letters'], current_state)
+                log[returning]['Name'], log[returning]['Price'],
+                choose_a_comic_book, log[returning]['Id Letters'],
+                current_state)
         return None
         print(
             '\nSorry! That is not a valid code for our past transactions! Try again!\n'
@@ -323,7 +261,7 @@ def employee_or_customer_choice():
         elif employee_or_customer == '2':
             continuing_customer()
         else:
-            print('\n\nInvalid. Try again\n')
+            print('\n\nInvalid. Try again.\n')
 
 
 def continuing_employee():
@@ -365,15 +303,16 @@ def continuing_customer():
             quit()
         elif choose == '1':
             opening_message()
-            y = choose_the_comic_book_return()
-            c = how_many_comics_returning()
-            returning_comics(y, c)
+            choose_comic_to_return = choose_the_comic_book_return()
+            choose_a_comic_book = how_many_comics_returning()
+            returning_comics(choose_comic_to_return, choose_a_comic_book)
         elif choose == '2':
             opening_message()
-            s = choose_the_comic_book()
-            a = due()
-            x = how_many_comics()
-            w = pay_deposit_and_rent(s, a, x)
+            choose_a_comic_book1 = choose_the_comic_book()
+            due_in = due()
+            how_many_comics1 = how_many_comics()
+            pay_deposit_and_rent(choose_a_comic_book1, due_in,
+                                 how_many_comics1)
         elif choose == '3':
             print(employee_or_customer_choice())
         elif choose == '4':

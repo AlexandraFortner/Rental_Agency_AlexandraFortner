@@ -3,3 +3,6 @@ Dr. Crane's "A Study In Fear", 5.0, 1, eThwF, rented
 Dr. Crane's "A Study In Fear", -5.0, 1, eThwF, returned
 Bane's "Breaking The Bat: It's A Snap!", 4.6, 2, hAAYw, rented
 Bane's "Breaking The Bat: It's A Snap!", -4.6, 1, hAAYw, returned
+Mr. Freeze's "Loving Unconditionally", 4.0, 1, Feoee, rented
+Mr. Freeze's "Loving Unconditionally", -4.0, 1, Feoee, returned
+Selina Kyle's "Crafty Claws: Lockpicking for Beginners!", 2.1, 1, Laehx, rented

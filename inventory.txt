@@ -1,11 +1,11 @@
 
- Dr. Crane's "Scarecrow Therapists: Outstanding In Their Field!", 100, 40.00
- Jervis Tetch's "Wonderful Wonderland Fairy Tales!", 99, 20.00
- Edward Nygma's "Riddles To Blow The Mind...Literally!", 100, 30.50
- Bane's "Breaking The Bat: It's A Snap!", 99, 36.00
- Hugo Strange's "The Dark History Of The Medical Practice", 100, 12.00
- Two-Face's "A Sigh Of Duality: Coping with Your Scars", 100, 26.00
- Mr. Freeze's "Loving Unconditionally: I Don't Deserve This", 100, 30.00
- Oswald Cobblepot's "Making Puns Huh? Toucan Play At That Game!", 100, 12.00
- Pamela Isley's "Plants Are Fronds! Not Food!", 100, 21.00
+Dr. Crane's "Scarecrow Therapists: Outstanding In Their Field!", 100, 40.00
+Jervis Tetch's "Wonderful Wonderland Fairy Tales!", 100, 20.00
+Edward Nygma's "Riddles To Blow The Mind...Literally!", 100, 30.50
+Bane's "Breaking The Bat: It's A Snap!", 100, 36.00
+Hugo Strange's "The Dark History Of The Medical Practice", 100, 12.00
+Two-Face's "A Sigh Of Duality: Coping with Your Scars", 100, 26.00
+Mr. Freeze's "Loving Unconditionally: I Don't Deserve This", 100, 30.00
+Oswald Cobblepot's "Making Puns Huh? Toucan Play At That Game!", 100, 12.00
+Pamela Isley's "Plants Are Fronds! Not Food!", 100, 21.00
 Selina Kyle's "Crafty Claws: Lockpicking for Beginners!", 100, 28.00

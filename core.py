@@ -92,7 +92,6 @@ def convert_back(inventory):
     """
     count = 0
     new_inventory = ''
-    price = float(inventory[count]['Price'])
     for item in inventory:
         count += 1
         new_inventory += '\n{}, {}, {:.2f}'.format(

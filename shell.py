@@ -100,13 +100,13 @@ def choose_the_comic_book():
         listey = disk.open_inventory()
         first = slow_type(
             '\n-What comic book would you like to rent today?\n\n-').title()
-        item = str(listey[int(first)]['Name'])
         numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         if first == 'Q':
             quit()
         elif first not in numbers:
             print('\n\nInvalid choice. Try again.\n-')
         elif first in numbers:
+            item = str(listey[int(first)]['Name'])
             print('\n•You\'ve chosen ' + item + '•')
             break
         else:
@@ -121,14 +121,13 @@ def choose_the_comic_book_return():
         listey = disk.open_inventory()
         first = slow_type(
             '\n-What comic book would you like to return today?\n\n-').title()
-        item = str(listey[int(first)]['Name'])
-
         numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
         if first == 'Q':
             quit()
         elif first not in numbers:
             print('\n\nInvalid choice. Try again.\n-')
         elif first in numbers:
+            item = str(listey[int(first)]['Name'])
             print('\n•You\'ve chosen ' + item + '•')
             break
 
@@ -171,8 +170,8 @@ def how_many_comics():
 
 def how_many_comics_returning():
     while True:
-        how_many1 = int(
-            slow_type('\nHow many would you like to return?\n\n-').title())
+        how_many1 = slow_type(
+            '\nHow many would you like to return?\n\n-').title()
         if how_many1 == 'Q':
             exit()
         elif how_many1 > 100:
@@ -180,7 +179,7 @@ def how_many_comics_returning():
                 '\nSorry, we have a limit of 100 comic book copies. Please input a lower number.\n\n-'
             )
         elif how_many1 <= 100:
-            return how_many1
+            return int(how_many1)
             break
         else:
             print('\nInvalid input. Try again.\n\n-')
